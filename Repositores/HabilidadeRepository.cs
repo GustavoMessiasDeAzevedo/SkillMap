@@ -69,4 +69,26 @@ namespace SkillMap.Repositores
         }
 
         // MÉTODO AUXILIAR 2: Insere a nova habilidade e retorna o ID gerado (SCOPE_IDENTITY())
-        private int InserirNovaH
+        private int InserirNovaHabilidade(string nomeHabilidade)
+        {
+            using (var conexao = ConexaoDB.GetConexao())
+            {
+                // Inserir na tabela Habilidades e retornar o ID gerado
+                string sql = @"INSERT INTO Habilidades (Nome) VALUES (@Nome); 
+                               SELECT SCOPE_IDENTITY();";
+
+                using (var comando = new SqlCommand(sql, conexao))
+                {
+                    comando.Parameters.AddWithValue("@Nome", nomeHabilidade);
+
+                    conexao.Open();
+
+                    // ExecuteScalar retorna o valor do SCOPE_IDENTITY()
+                    var novoId = comando.ExecuteScalar();
+
+                    return Convert.ToInt32(novoId);
+                }
+            }
+        }
+    }
+}
