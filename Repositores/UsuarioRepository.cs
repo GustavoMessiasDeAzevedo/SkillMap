@@ -18,7 +18,8 @@ namespace SkillMap.Repositores
             {
                 string sql = @"
                     INSERT INTO Usuarios (Nome, Email, Senha, Descricao, tipo_usuario)
-                    VALUES (@Nome, @Email, @Senha, @Descricao, @tipo_usuario)";
+                    VALUES (@Nome, @Email, @Senha, @Descricao, @tipo_usuario);
+                    SELECT SCOPE_IDENTITY();";
 
                 using (var comando = new SqlCommand(sql, conexao))
                 {
