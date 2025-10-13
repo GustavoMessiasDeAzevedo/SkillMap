@@ -31,6 +31,7 @@ namespace SkillMap.Repositores
                     BEGIN
                         INSERT INTO Habilidade_Usuarios (UsuarioId, HabilidadeId)
                         VALUES (@UsuarioId, @HabilidadeId)
+                        SELECT SCOPE_IDENTITY();
                     END";
 
                 using (var comando = new SqlCommand(sqlAssociacao, conexao))

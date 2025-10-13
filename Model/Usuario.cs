@@ -12,6 +12,7 @@ namespace SkillMap.Model
         public string? Nome { get; set; }
         public string? Email { get; set; }
         public string? Senha { get; set; }
+        public string? Localizacao { get; set; }
         public string? Descricao { get; set; }
         public bool tipo_usuario { get; set; }
     }
