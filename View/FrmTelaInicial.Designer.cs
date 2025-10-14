@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            button = new Button();
             btnLogin = new Button();
             btnCadastrar = new Button();
             lblSkillMapTI = new Label();
             SuspendLayout();
             // 
-            // button1
+            // button
             // 
-            button1.Location = new Point(112, 224);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button.Location = new Point(96, 224);
+            button.Name = "button";
+            button.Size = new Size(112, 23);
+            button.TabIndex = 0;
+            button.Text = "button";
+            button.UseVisualStyleBackColor = true;
+            button.Click += button1_Click;
             // 
             // btnLogin
             // 
@@ -52,6 +52,7 @@
             btnLogin.TabIndex = 1;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += btnLogin_Click;
             // 
             // btnCadastrar
             // 
@@ -81,7 +82,7 @@
             Controls.Add(lblSkillMapTI);
             Controls.Add(btnCadastrar);
             Controls.Add(btnLogin);
-            Controls.Add(button1);
+            Controls.Add(button);
             Name = "FrmTelaInicial";
             Text = "Form1";
             ResumeLayout(false);
@@ -90,7 +91,7 @@
 
         #endregion
 
-        private Button button1;
+        private Button button;
         private Button btnLogin;
         private Button btnCadastrar;
         private Label lblSkillMapTI;

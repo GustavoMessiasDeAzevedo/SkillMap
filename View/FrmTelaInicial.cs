@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 using SkillMap.Database;
+using SkillMap.View;
 using SkilMaps.View;
 
 namespace SkillMap
@@ -41,6 +42,12 @@ namespace SkillMap
         {
             FrmCadastroUsuario frmCadastro = new FrmCadastroUsuario();
             frmCadastro.ShowDialog();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            FrmTelaLogin frmLogin = new FrmTelaLogin();
+            frmLogin.ShowDialog();
         }
     }
 }
