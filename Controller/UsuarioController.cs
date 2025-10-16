@@ -27,12 +27,17 @@ namespace SkillMap.Controller
                 string confirmarSenha = _frmCadastroUsuario.SenhaConfirmacao;
                 if (usuario.Senha == confirmarSenha)
                 {
-                    //int usuarioId = _usuarioRepository.Inserir(usuario);
+                    int usuarioId = _usuarioRepository.Inserir(usuario);
 
-                    //var habilidadeController = new HabilidadeController(_frmCadastroUsuario);
-                    //habilidadeController.ProcessarHabilidadesDoUsuario(usuarioId);
-                    _usuarioRepository.Inserir(usuario);
-                    MessageBox.Show("Cadastro realizado com sucesso!!");
+                    if (usuarioId < 0)
+                    {
+                        var habilidadeController = new HabilidadeController(_frmCadastroUsuario);
+                        habilidadeController.ProcessarHabilidadesDoUsuario(usuarioId);
+                        MessageBox.Show("Cadastro realizado com sucesso!!");
+                    }
+
+              
+ 
                 }else
                 {
                     MessageBox.Show("As senhas não conferem, tente novamente.");
