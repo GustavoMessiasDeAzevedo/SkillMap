@@ -29,7 +29,7 @@ namespace SkillMap.Controller
                 {
                     int usuarioId = _usuarioRepository.Inserir(usuario);
 
-                    if (usuarioId < 0)
+                    if (usuarioId > 0)
                     {
                         var habilidadeController = new HabilidadeController(_frmCadastroUsuario);
                         habilidadeController.ProcessarHabilidadesDoUsuario(usuarioId);
