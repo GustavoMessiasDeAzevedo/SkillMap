@@ -27,16 +27,16 @@ namespace SkillMap.Repositores
                 // na tabela de relacionamento, caso a mesma habilidade seja processada duas vezes
                 // por algum motivo (embora o Distinct no Controller já ajude).
                 string sqlAssociacao = @"
-                    IF NOT EXISTS (SELECT 1 FROM Habilidade_Usuarios WHERE id = @id AND habilidade_id = @habilidade_id)
+                    IF NOT EXISTS (SELECT 1 FROM Habilidade_Usuarios WHERE usuario_id = @usuario_id AND habilidade_id = @habilidade_id)
                     BEGIN
-                        INSERT INTO Habilidade_Usuarios (id, habilidade_id)
-                        VALUES (@id, @habilidade_id)
+                        INSERT INTO Habilidade_Usuarios (usuario_id, habilidade_id)
+                        VALUES (@usuario_id, @habilidade_id)
                         SELECT SCOPE_IDENTITY();
                     END";
 
                 using (var comando = new SqlCommand(sqlAssociacao, conexao))
                 {
-                    comando.Parameters.AddWithValue("@id", usuarioId);
+                    comando.Parameters.AddWithValue("@usuario_id", usuarioId);
                     comando.Parameters.AddWithValue("@habilidade_id", habilidadeId);
 
                     conexao.Open();
@@ -50,7 +50,7 @@ namespace SkillMap.Repositores
         {
             using (var conexao = ConexaoDB.GetConexao())
             {
-                string sql = "SELECT Id FROM Habilidades WHERE Nome = @Nome";
+                string sql = "SELECT habilidade_id FROM Habilidades WHERE Nome = @Nome";
 
                 using (var comando = new SqlCommand(sql, conexao))
                 {
