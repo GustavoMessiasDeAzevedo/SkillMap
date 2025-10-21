@@ -88,7 +88,7 @@
             txtDescricao.Name = "txtDescricao";
             txtDescricao.PlaceholderText = "Conte as habilidades que possui, use a virgula para separar cada uma delas";
             txtDescricao.Size = new Size(475, 110);
-            txtDescricao.TabIndex = 15;
+            txtDescricao.TabIndex = 6;
             // 
             // pnlTipoUsuario
             // 
@@ -142,7 +142,7 @@
             txtConfirmarSenha.Margin = new Padding(4, 3, 4, 3);
             txtConfirmarSenha.Name = "txtConfirmarSenha";
             txtConfirmarSenha.Size = new Size(251, 23);
-            txtConfirmarSenha.TabIndex = 15;
+            txtConfirmarSenha.TabIndex = 4;
             // 
             // lblDescricao
             // 
@@ -170,7 +170,7 @@
             txtEmail.Margin = new Padding(4, 3, 4, 3);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(298, 23);
-            txtEmail.TabIndex = 9;
+            txtEmail.TabIndex = 2;
             // 
             // lblEnail
             // 
@@ -190,7 +190,7 @@
             cbxPerfil.Margin = new Padding(4, 3, 4, 3);
             cbxPerfil.Name = "cbxPerfil";
             cbxPerfil.Size = new Size(140, 23);
-            cbxPerfil.TabIndex = 7;
+            cbxPerfil.TabIndex = 5;
             // 
             // txtSenha
             // 
@@ -198,7 +198,7 @@
             txtSenha.Margin = new Padding(4, 3, 4, 3);
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(251, 23);
-            txtSenha.TabIndex = 6;
+            txtSenha.TabIndex = 3;
             // 
             // txtNome
             // 
@@ -206,7 +206,7 @@
             txtNome.Margin = new Padding(4, 3, 4, 3);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(298, 23);
-            txtNome.TabIndex = 5;
+            txtNome.TabIndex = 1;
             // 
             // txtCodigo
             // 
@@ -277,6 +277,7 @@
             btnCancelar.TabIndex = 14;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // FrmCadastroUsuario
             // 

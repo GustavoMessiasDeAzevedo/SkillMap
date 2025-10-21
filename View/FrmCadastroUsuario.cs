@@ -37,6 +37,22 @@ namespace SkilMaps.View
                 tipo_usuario = rdbAtivo.Checked
             };
             _usuarioController.Salvar(usuario);
+            LimparCampos();
+        }
+
+        public void LimparCampos()
+        {
+            txtCodigo.Clear();
+            txtDescricao.Clear();
+            txtEmail.Clear();
+            txtNome.Clear();
+            txtSenha.Clear();
+            txtConfirmarSenha.Clear();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         public string SenhaConfirmacao
