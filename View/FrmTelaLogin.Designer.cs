@@ -102,7 +102,7 @@
             Controls.Add(txtSenha);
             Controls.Add(txtEmail);
             Name = "FrmTelaLogin";
-            Text = "FrmTelaLogin";
+            Text = "Tela de Login";
             ResumeLayout(false);
             PerformLayout();
         }

@@ -49,11 +49,11 @@ namespace SkillMap.View
                     {
                         MessageBox.Show("Login realizado com sucesso!");
 
-                        // Abre a próxima tela
+                        
                         TelaPrincipal frm = new TelaPrincipal();
                         frm.Show();
 
-                        // Esconde a tela de login
+                        
                         this.Hide();
                     }
                     else

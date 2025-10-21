@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button = new Button();
+            btnTesteConexao = new Button();
             btnLogin = new Button();
             btnCadastrar = new Button();
             lblSkillMapTI = new Label();
             SuspendLayout();
             // 
-            // button
+            // btnTesteConexao
             // 
-            button.Location = new Point(96, 224);
-            button.Name = "button";
-            button.Size = new Size(112, 23);
-            button.TabIndex = 0;
-            button.Text = "button";
-            button.UseVisualStyleBackColor = true;
-            button.Click += button1_Click;
+            btnTesteConexao.Location = new Point(86, 223);
+            btnTesteConexao.Name = "btnTesteConexao";
+            btnTesteConexao.Size = new Size(128, 23);
+            btnTesteConexao.TabIndex = 0;
+            btnTesteConexao.Text = "Teste Conexão";
+            btnTesteConexao.UseVisualStyleBackColor = true;
+            btnTesteConexao.Click += button1_Click;
             // 
             // btnLogin
             // 
@@ -82,16 +82,16 @@
             Controls.Add(lblSkillMapTI);
             Controls.Add(btnCadastrar);
             Controls.Add(btnLogin);
-            Controls.Add(button);
+            Controls.Add(btnTesteConexao);
             Name = "FrmTelaInicial";
-            Text = "Form1";
+            Text = "Tela Inicial";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button;
+        private Button btnTesteConexao;
         private Button btnLogin;
         private Button btnCadastrar;
         private Label lblSkillMapTI;
