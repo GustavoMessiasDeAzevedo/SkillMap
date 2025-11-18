@@ -30,7 +30,7 @@ namespace SkillMap.View
                 return;
             }
 
-            string connectionString = "Server=MAR0625665W10-1;Database=SkillMap;User Id=sa;Password=senac2025;TrustServerCertificate=True;";
+            string connectionString = "Server=MAR0625633W10-1;Database=SkillMap;User Id=sa;Password=senac2025;TrustServerCertificate=True;";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -47,8 +47,6 @@ namespace SkillMap.View
 
                     if (count > 0)
                     {
-                        MessageBox.Show("Login realizado com sucesso!");
-
                         
                         TelaPrincipal frm = new TelaPrincipal();
                         frm.Show();
