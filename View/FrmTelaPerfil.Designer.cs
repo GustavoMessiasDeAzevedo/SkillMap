@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             gpbPerfilUsuario = new GroupBox();
-            lblNome = new Label();
-            txtNomeUsuario = new TextBox();
-            txtEmailUsuario = new TextBox();
-            lblEmail = new Label();
-            txtEstado = new TextBox();
-            lblEstado = new Label();
+            btnExcluir = new Button();
+            btnCancelar = new Button();
+            btnEditar = new Button();
+            btnSalvar = new Button();
             txtObservacaoUsuario = new TextBox();
             lblObservacao = new Label();
-            btnSalvar = new Button();
-            btnEditar = new Button();
-            btnCancelar = new Button();
-            btnExcluir = new Button();
+            txtEstado = new TextBox();
+            lblEstado = new Label();
+            txtEmailUsuario = new TextBox();
+            lblEmail = new Label();
+            txtNomeUsuario = new TextBox();
+            lblNome = new Label();
             gpbPerfilUsuario.SuspendLayout();
             SuspendLayout();
             // 
@@ -65,56 +65,44 @@
             gpbPerfilUsuario.TabStop = false;
             gpbPerfilUsuario.Text = "Perfil";
             // 
-            // lblNome
+            // btnExcluir
             // 
-            lblNome.AutoSize = true;
-            lblNome.Location = new Point(16, 32);
-            lblNome.Name = "lblNome";
-            lblNome.Size = new Size(40, 15);
-            lblNome.TabIndex = 0;
-            lblNome.Text = "Nome";
+            btnExcluir.Enabled = false;
+            btnExcluir.Location = new Point(408, 312);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(120, 39);
+            btnExcluir.TabIndex = 9;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.UseVisualStyleBackColor = true;
             // 
-            // txtNomeUsuario
+            // btnCancelar
             // 
-            txtNomeUsuario.Enabled = false;
-            txtNomeUsuario.Location = new Point(16, 48);
-            txtNomeUsuario.Name = "txtNomeUsuario";
-            txtNomeUsuario.Size = new Size(512, 23);
-            txtNomeUsuario.TabIndex = 1;
+            btnCancelar.Enabled = false;
+            btnCancelar.Location = new Point(280, 312);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(120, 39);
+            btnCancelar.TabIndex = 10;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // txtEmailUsuario
+            // btnEditar
             // 
-            txtEmailUsuario.Enabled = false;
-            txtEmailUsuario.Location = new Point(16, 96);
-            txtEmailUsuario.Name = "txtEmailUsuario";
-            txtEmailUsuario.Size = new Size(512, 23);
-            txtEmailUsuario.TabIndex = 3;
+            btnEditar.Location = new Point(152, 312);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(120, 39);
+            btnEditar.TabIndex = 9;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = true;
             // 
-            // lblEmail
+            // btnSalvar
             // 
-            lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(16, 80);
-            lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(36, 15);
-            lblEmail.TabIndex = 2;
-            lblEmail.Text = "Email";
-            // 
-            // txtEstado
-            // 
-            txtEstado.Enabled = false;
-            txtEstado.Location = new Point(16, 144);
-            txtEstado.Name = "txtEstado";
-            txtEstado.Size = new Size(108, 23);
-            txtEstado.TabIndex = 5;
-            // 
-            // lblEstado
-            // 
-            lblEstado.AutoSize = true;
-            lblEstado.Location = new Point(16, 128);
-            lblEstado.Name = "lblEstado";
-            lblEstado.Size = new Size(42, 15);
-            lblEstado.TabIndex = 4;
-            lblEstado.Text = "Estado";
+            btnSalvar.Enabled = false;
+            btnSalvar.Location = new Point(16, 312);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(120, 39);
+            btnSalvar.TabIndex = 8;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.UseVisualStyleBackColor = true;
             // 
             // txtObservacaoUsuario
             // 
@@ -122,6 +110,7 @@
             txtObservacaoUsuario.Location = new Point(16, 192);
             txtObservacaoUsuario.Multiline = true;
             txtObservacaoUsuario.Name = "txtObservacaoUsuario";
+            txtObservacaoUsuario.ReadOnly = true;
             txtObservacaoUsuario.Size = new Size(512, 104);
             txtObservacaoUsuario.TabIndex = 7;
             // 
@@ -134,44 +123,59 @@
             lblObservacao.TabIndex = 6;
             lblObservacao.Text = "Observação";
             // 
-            // btnSalvar
+            // txtEstado
             // 
-            btnSalvar.Enabled = false;
-            btnSalvar.Location = new Point(16, 312);
-            btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(120, 39);
-            btnSalvar.TabIndex = 8;
-            btnSalvar.Text = "Salvar";
-            btnSalvar.UseVisualStyleBackColor = true;
+            txtEstado.Enabled = false;
+            txtEstado.Location = new Point(16, 144);
+            txtEstado.Name = "txtEstado";
+            txtEstado.ReadOnly = true;
+            txtEstado.Size = new Size(108, 23);
+            txtEstado.TabIndex = 5;
             // 
-            // btnEditar
+            // lblEstado
             // 
-            btnEditar.Location = new Point(152, 312);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(120, 39);
-            btnEditar.TabIndex = 9;
-            btnEditar.Text = "Editar";
-            btnEditar.UseVisualStyleBackColor = true;
+            lblEstado.AutoSize = true;
+            lblEstado.Location = new Point(16, 128);
+            lblEstado.Name = "lblEstado";
+            lblEstado.Size = new Size(42, 15);
+            lblEstado.TabIndex = 4;
+            lblEstado.Text = "Estado";
             // 
-            // btnCancelar
+            // txtEmailUsuario
             // 
-            btnCancelar.Enabled = false;
-            btnCancelar.Location = new Point(280, 312);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(120, 39);
-            btnCancelar.TabIndex = 10;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
+            txtEmailUsuario.Enabled = false;
+            txtEmailUsuario.Location = new Point(16, 96);
+            txtEmailUsuario.Name = "txtEmailUsuario";
+            txtEmailUsuario.ReadOnly = true;
+            txtEmailUsuario.Size = new Size(512, 23);
+            txtEmailUsuario.TabIndex = 3;
             // 
-            // btnExcluir
+            // lblEmail
             // 
-            btnExcluir.Enabled = false;
-            btnExcluir.Location = new Point(408, 312);
-            btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(120, 39);
-            btnExcluir.TabIndex = 9;
-            btnExcluir.Text = "Excluir";
-            btnExcluir.UseVisualStyleBackColor = true;
+            lblEmail.AutoSize = true;
+            lblEmail.Location = new Point(16, 80);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(36, 15);
+            lblEmail.TabIndex = 2;
+            lblEmail.Text = "Email";
+            // 
+            // txtNomeUsuario
+            // 
+            txtNomeUsuario.Enabled = false;
+            txtNomeUsuario.Location = new Point(16, 48);
+            txtNomeUsuario.Name = "txtNomeUsuario";
+            txtNomeUsuario.ReadOnly = true;
+            txtNomeUsuario.Size = new Size(512, 23);
+            txtNomeUsuario.TabIndex = 1;
+            // 
+            // lblNome
+            // 
+            lblNome.AutoSize = true;
+            lblNome.Location = new Point(16, 32);
+            lblNome.Name = "lblNome";
+            lblNome.Size = new Size(40, 15);
+            lblNome.TabIndex = 0;
+            lblNome.Text = "Nome";
             // 
             // FrmTelaPerfil
             // 

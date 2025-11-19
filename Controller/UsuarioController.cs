@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SkillMap.Model;
 using SkillMap.Repositores;
+using SkillMap.View;
 using SkilMaps.View;
 
 namespace SkillMap.Controller
@@ -47,6 +48,20 @@ namespace SkillMap.Controller
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao cadastrar: " + ex.Message);
+            }
+        }
+
+        public void Excluir(int id)
+        {
+            try
+            {
+                _usuarioRepository.Excluir(id);
+                FrmTelaPerfil frmTelaPerfil = new FrmTelaPerfil();
+                frmTelaPerfil.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao excluir: " + ex.Message);
             }
         }
     }

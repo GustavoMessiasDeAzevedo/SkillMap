@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.DirectoryServices;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,5 +45,20 @@ namespace SkillMap.Repositores
                 }
             }
         }
-    }
+
+        public void Excluir(int id)
+        {
+            using (var conexao = ConexaoDB.GetConexao())
+            {
+                string sql = "DELETE FROM Usuarios WHERE Id = @Id";
+
+                using (var comando = new SqlCommand(sql, conexao))
+                {
+                    comando.Parameters.AddWithValue("@Id", id);
+                    conexao.Open();
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+    }                                                                                                                                                                              
 }
