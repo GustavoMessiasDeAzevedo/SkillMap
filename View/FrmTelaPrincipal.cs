@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SkillMap.View
 {
-    public partial class TelaPrincipal : Form
+    public partial class FrmTelaPrincipal : Form
     {
-        public TelaPrincipal()
+        public FrmTelaPrincipal()
         {
             InitializeComponent();
         }

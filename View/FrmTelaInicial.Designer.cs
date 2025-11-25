@@ -85,6 +85,7 @@
             Controls.Add(btnTesteConexao);
             Name = "FrmTelaInicial";
             Text = "Tela Inicial";
+            TopMost = true;
             ResumeLayout(false);
             PerformLayout();
         }

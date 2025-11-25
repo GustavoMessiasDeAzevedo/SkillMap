@@ -1,6 +1,6 @@
 ﻿namespace SkillMap.View
 {
-    partial class TelaPrincipal
+    partial class FrmTelaPrincipal
     {
         /// <summary>
         /// Required designer variable.

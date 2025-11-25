@@ -41,13 +41,14 @@ namespace SkillMap
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             FrmCadastroUsuario frmCadastro = new FrmCadastroUsuario();
-            frmCadastro.ShowDialog();
+            frmCadastro.Show();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             FrmTelaLogin frmLogin = new FrmTelaLogin();
-            frmLogin.ShowDialog();
+            frmLogin.Show();
+            this.Close();
         }
     }
 }

@@ -14,9 +14,11 @@ namespace SkillMap.View
 {
     public partial class FrmTelaLogin : Form
     {
+        private FrmTelaInicial frmTelaInicial;
         public FrmTelaLogin()
         {
             InitializeComponent();
+            frmTelaInicial = new FrmTelaInicial();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -47,12 +49,11 @@ namespace SkillMap.View
 
                     if (count > 0)
                     {
-                        
-                        TelaPrincipal frm = new TelaPrincipal();
-                        frm.Show();
-
-                        
                         this.Hide();
+                        frmTelaInicial.Hide();
+                        FrmTelaPrincipal frmTelaPrincipal = new FrmTelaPrincipal();
+                        frmTelaPrincipal.Show();
+                        
                     }
                     else
                     {
