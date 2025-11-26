@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace SkillMap.View
                 return;
             }
 
-            string connectionString = "Server=MAR0625633W10-1;Database=SkillMap;User Id=sa;Password=senac2025;TrustServerCertificate=True;";
+            string connectionString = ConfigurationManager.ConnectionStrings["SkillMapDB"].ConnectionString;
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
