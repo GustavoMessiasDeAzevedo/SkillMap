@@ -13,6 +13,7 @@ namespace SkillMap.Controller
     public class UsuarioController
     {
         private FrmCadastroUsuario _frmCadastroUsuario;
+        private FrmTelaPrincipal _frmTelaPrincipal;
         private UsuarioRepository _usuarioRepository;
         public UsuarioController(FrmCadastroUsuario view)
         {
@@ -62,6 +63,21 @@ namespace SkillMap.Controller
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao excluir: " + ex.Message);
+            }
+        }
+
+        public void ListarUsuarios(string termo = "")
+        {
+            try
+            {
+
+                var listaUsuario = _usuarioRepository.Listar(termo);
+                _frmTelaPrincipal.ExibirUsuario(listaUsuario);
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro ao listar usuários: " + ex.Message);
             }
         }
     }

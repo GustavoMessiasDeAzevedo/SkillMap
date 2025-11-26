@@ -37,7 +37,7 @@ namespace SkillMap
                 MessageBox.Show("Erro ao conectar: " + ex.Message);
             }
         }
-
+            
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             FrmCadastroUsuario frmCadastro = new FrmCadastroUsuario();
@@ -48,7 +48,7 @@ namespace SkillMap
         {
             FrmTelaLogin frmLogin = new FrmTelaLogin();
             frmLogin.Show();
-            this.Close();
+            this.Hide();
         }
     }
 }

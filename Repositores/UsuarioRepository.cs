@@ -13,6 +13,66 @@ namespace SkillMap.Repositores
     public class UsuarioRepository
     {
 
+        public List<Usuario> Listar(string termo = "")
+        {
+            var lista = new List<Usuario>();
+
+            using (var conexao = ConexaoDB.GetConexao())
+            {
+                string sql = @"
+            SELECT 
+                u.Nome AS Nome_Usuario,
+                STRING_AGG(h.Nome, ', ') AS Habilidades,
+                u.Localizacao AS Estado
+            FROM Usuarios u
+                LEFT JOIN UsuarioHabilidades uh ON u.Id = uh.UsuarioId
+                LEFT JOIN Habilidades h ON h.Id = uh.HabilidadeId";
+
+                if (!string.IsNullOrEmpty(termo))
+                {
+                    sql += @"
+                    GROUP BY u.Id, u.Nome, u.Localizacao
+                    HAVING 
+                    u.Nome LIKE @termo
+                    OR u.Localizacao LIKE @termo
+                    OR STRING_AGG(h.Nome, ', ') LIKE @termo";
+                }
+                else
+                {
+                    sql += " GROUP BY u.Id, u.Nome, u.Localizacao ";
+                }
+
+                using (var comando = new SqlCommand(sql, conexao))
+                {
+                    if(!string.IsNullOrEmpty(termo))
+                    {
+                        comando.Parameters.AddWithValue("@termo", $"%{termo}%");
+                    }
+
+                    conexao.Open();
+
+                    using (var linhas = comando.ExecuteReader())
+                    {
+                        while(linhas.Read())
+                        {
+                            var usuario = new Usuario
+                            {
+                                Nome = linhas["Nome_Usuario"].ToString(),
+                                Descricao = linhas["Habilidades"].ToString(),
+                                Localizacao = linhas["Estado"].ToString()
+                            };
+                            lista.Add(usuario);
+                        }
+                    }
+
+
+                }
+            }
+
+            return lista;
+        }
+
+
         public int Inserir(Usuario usuario)
         {
             using (var conexao = ConexaoDB.GetConexao())
