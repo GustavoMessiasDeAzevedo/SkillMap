@@ -21,6 +21,8 @@ namespace SkillMap.Controller
             _habilidadeRepository = new HabilidadeRepository();
         }
 
+        
+
         // MÉTODO CORRIGIDO: Agora recebe o ID do usuário
         public void ProcessarHabilidadesDoUsuario(int usuarioId)
         {

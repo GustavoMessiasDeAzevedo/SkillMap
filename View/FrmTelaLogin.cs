@@ -49,8 +49,7 @@ namespace SkillMap.View
 
                     if (count > 0)
                     {
-                        this.Hide();
-                        frmTelaInicial.Hide();
+                        this.Close();
                         FrmTelaPrincipal frmTelaPrincipal = new FrmTelaPrincipal();
                         frmTelaPrincipal.Show();
                         
@@ -70,7 +69,7 @@ namespace SkillMap.View
         private void btnCadastrase_Click(object sender, EventArgs e)
         {
             FrmCadastroUsuario frmCadastro = new FrmCadastroUsuario();
-            frmCadastro.ShowDialog();
+            frmCadastro.Show();
         }
     }
 }

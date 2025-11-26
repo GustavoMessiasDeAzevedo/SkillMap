@@ -33,7 +33,7 @@
             btnMeuPerfil = new Button();
             dgvPesquisaHabilidade = new DataGridView();
             btnPesquisar = new Button();
-            textBox1 = new TextBox();
+            txtPesquisar = new TextBox();
             lblHabilidades = new Label();
             gpbTelaInicial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPesquisaHabilidade).BeginInit();
@@ -45,7 +45,7 @@
             gpbTelaInicial.Controls.Add(btnMeuPerfil);
             gpbTelaInicial.Controls.Add(dgvPesquisaHabilidade);
             gpbTelaInicial.Controls.Add(btnPesquisar);
-            gpbTelaInicial.Controls.Add(textBox1);
+            gpbTelaInicial.Controls.Add(txtPesquisar);
             gpbTelaInicial.Controls.Add(lblHabilidades);
             gpbTelaInicial.Location = new Point(8, 8);
             gpbTelaInicial.Name = "gpbTelaInicial";
@@ -88,13 +88,14 @@
             btnPesquisar.TabIndex = 2;
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
-            // textBox1
+            // txtPesquisar
             // 
-            textBox1.Location = new Point(16, 40);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(368, 23);
-            textBox1.TabIndex = 1;
+            txtPesquisar.Location = new Point(16, 40);
+            txtPesquisar.Name = "txtPesquisar";
+            txtPesquisar.Size = new Size(368, 23);
+            txtPesquisar.TabIndex = 1;
             // 
             // lblHabilidades
             // 
@@ -125,7 +126,7 @@
         private GroupBox gpbTelaInicial;
         private DataGridView dgvPesquisaHabilidade;
         private Button btnPesquisar;
-        private TextBox textBox1;
+        private TextBox txtPesquisar;
         private Label lblHabilidades;
         private Button btnSair;
         private Button btnMeuPerfil;

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SkillMap.Model;
+﻿using SkillMap.Model;
 using SkillMap.Repositores;
 using SkillMap.View;
 using SkilMaps.View;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace SkillMap.Controller
 {
@@ -14,19 +12,43 @@ namespace SkillMap.Controller
     {
         private FrmCadastroUsuario _frmCadastroUsuario;
         private FrmTelaPrincipal _frmTelaPrincipal;
+        private FrmTelaPerfil _frmTelaPerfil;
         private UsuarioRepository _usuarioRepository;
+
+        // Construtor para Cadastro
         public UsuarioController(FrmCadastroUsuario view)
         {
             _frmCadastroUsuario = view;
             _usuarioRepository = new UsuarioRepository();
         }
 
+        // Construtor para Tela Principal
+        public UsuarioController(FrmTelaPrincipal view)
+        {
+            _frmTelaPrincipal = view;
+            _usuarioRepository = new UsuarioRepository();
+        }
 
+        // Construtor para Tela de Perfil (para poder excluir)
+        public UsuarioController(FrmTelaPerfil view)
+        {
+            _frmTelaPerfil = view;
+            _usuarioRepository = new UsuarioRepository();
+        }
+
+        // ===== SALVAR =====
         public void Salvar(Usuario usuario)
         {
             try
             {
+                if (_frmCadastroUsuario == null)
+                {
+                    MessageBox.Show("Salvar só pode ser feito pela tela de cadastro.");
+                    return;
+                }
+
                 string confirmarSenha = _frmCadastroUsuario.SenhaConfirmacao;
+
                 if (usuario.Senha == confirmarSenha)
                 {
                     int usuarioId = _usuarioRepository.Inserir(usuario);
@@ -37,14 +59,11 @@ namespace SkillMap.Controller
                         habilidadeController.ProcessarHabilidadesDoUsuario(usuarioId);
                         MessageBox.Show("Cadastro realizado com sucesso!!");
                     }
-
-              
- 
-                }else
+                }
+                else
                 {
                     MessageBox.Show("As senhas não conferem, tente novamente.");
                 }
-                    
             }
             catch (Exception ex)
             {
@@ -52,13 +71,20 @@ namespace SkillMap.Controller
             }
         }
 
+        // ===== EXCLUIR =====
         public void Excluir(int id)
         {
             try
             {
                 _usuarioRepository.Excluir(id);
-                FrmTelaPerfil frmTelaPerfil = new FrmTelaPerfil();
-                frmTelaPerfil.Close();
+
+                if (_frmTelaPerfil != null)
+                {
+                    // Fecha a tela real que está aberta
+                    _frmTelaPerfil.Close();
+                }
+
+                MessageBox.Show("Usuário excluído com sucesso.");
             }
             catch (Exception ex)
             {
@@ -66,16 +92,26 @@ namespace SkillMap.Controller
             }
         }
 
+        // ===== LISTAR =====
         public void ListarUsuarios(string termo = "")
         {
             try
             {
+                if (_frmTelaPrincipal == null)
+                    return;
 
                 var listaUsuario = _usuarioRepository.Listar(termo);
-                _frmTelaPrincipal.ExibirUsuario(listaUsuario);
 
+                var listaDataGridView = listaUsuario.Select(u => new ListagemUsuario
+                {
+                    Nome = u.Nome,
+                    Habilidades = u.Descricao,
+                    Estado = u.Localizacao
+                }).ToList();
+
+                _frmTelaPrincipal.ExibirUsuario(listaDataGridView);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro ao listar usuários: " + ex.Message);
             }

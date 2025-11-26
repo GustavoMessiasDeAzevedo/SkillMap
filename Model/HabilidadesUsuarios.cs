@@ -8,7 +8,7 @@ namespace SkillMap.Model
 {
     public class HabilidadesUsuarios
     {
-        public int usuario_id { get; set; }
-        public int habilidade_id { get; set; }
+        public int? usuario_id { get; set; }
+        public int? habilidade_id { get; set; }
     }
 }

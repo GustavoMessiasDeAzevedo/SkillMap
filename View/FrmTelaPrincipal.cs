@@ -18,16 +18,23 @@ namespace SkillMap.View
         public FrmTelaPrincipal()
         {
             InitializeComponent();
+            _usuarioController = new UsuarioController(this);
         }
 
-        public void ExibirUsuario(List<Usuario> usuario)
+        public void ExibirUsuario(List<ListagemUsuario> usuarios)
         {
-            dgvPesquisaHabilidade.DataSource = usuario;
+            dgvPesquisaHabilidade.DataSource = usuarios;
         }
 
         private void FrmTelaPrincipal_Load(object sender, EventArgs e)
         {
             _usuarioController.ListarUsuarios();
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            string termo = txtPesquisar.Text.Trim();
+            _usuarioController.ListarUsuarios(termo);
         }
     }
 }

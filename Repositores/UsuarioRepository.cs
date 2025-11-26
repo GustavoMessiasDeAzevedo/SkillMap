@@ -21,51 +21,46 @@ namespace SkillMap.Repositores
             {
                 string sql = @"
             SELECT 
+                u.Id,
                 u.Nome AS Nome_Usuario,
                 STRING_AGG(h.Nome, ', ') AS Habilidades,
                 u.Localizacao AS Estado
             FROM Usuarios u
-                LEFT JOIN UsuarioHabilidades uh ON u.Id = uh.UsuarioId
-                LEFT JOIN Habilidades h ON h.Id = uh.HabilidadeId";
+            LEFT JOIN Habilidade_Usuarios hu ON u.id = hu.usuario_id
+            LEFT JOIN Habilidades h ON h.habilidade_id = hu.habilidade_id
+        ";
+
+                sql += " GROUP BY u.Id, u.Nome, u.Localizacao ";
 
                 if (!string.IsNullOrEmpty(termo))
                 {
                     sql += @"
-                    GROUP BY u.Id, u.Nome, u.Localizacao
-                    HAVING 
-                    u.Nome LIKE @termo
+                HAVING 
+                       u.Nome LIKE @termo
                     OR u.Localizacao LIKE @termo
-                    OR STRING_AGG(h.Nome, ', ') LIKE @termo";
-                }
-                else
-                {
-                    sql += " GROUP BY u.Id, u.Nome, u.Localizacao ";
+                    OR STRING_AGG(h.Nome, ', ') LIKE @termo
+            ";
                 }
 
                 using (var comando = new SqlCommand(sql, conexao))
                 {
-                    if(!string.IsNullOrEmpty(termo))
-                    {
+                    if (!string.IsNullOrEmpty(termo))
                         comando.Parameters.AddWithValue("@termo", $"%{termo}%");
-                    }
 
                     conexao.Open();
 
                     using (var linhas = comando.ExecuteReader())
                     {
-                        while(linhas.Read())
+                        while (linhas.Read())
                         {
-                            var usuario = new Usuario
+                            lista.Add(new Usuario
                             {
                                 Nome = linhas["Nome_Usuario"].ToString(),
-                                Descricao = linhas["Habilidades"].ToString(),
+                                Descricao = linhas["Habilidades"] == DBNull.Value ? "" : linhas["Habilidades"].ToString(),
                                 Localizacao = linhas["Estado"].ToString()
-                            };
-                            lista.Add(usuario);
+                            });
                         }
                     }
-
-
                 }
             }
 

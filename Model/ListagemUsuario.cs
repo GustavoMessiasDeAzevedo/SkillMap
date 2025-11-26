@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace SkillMap.Model
 {
-    public class Habilidades
+    public class ListagemUsuario
     {
-        public int? Id { get; set; }
         public string? Nome { get; set; }
+        public string? Habilidades { get; set; }
+        public string? Estado { get; set; }
     }
 }
