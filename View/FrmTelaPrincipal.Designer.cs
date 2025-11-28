@@ -71,6 +71,7 @@
             btnMeuPerfil.TabIndex = 4;
             btnMeuPerfil.Text = "Meu Perfil";
             btnMeuPerfil.UseVisualStyleBackColor = true;
+            btnMeuPerfil.Click += btnMeuPerfil_Click;
             // 
             // dgvPesquisaHabilidade
             // 

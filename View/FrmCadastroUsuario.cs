@@ -34,7 +34,7 @@ namespace SkilMaps.View
                 Descricao = txtDescricao.Text,
                 Senha = txtSenha.Text,
                 Localizacao = cbxPerfil.Text,
-                tipo_usuario = rdbAtivo.Checked
+              
             };
             _usuarioController.Salvar(usuario);
             LimparCampos();

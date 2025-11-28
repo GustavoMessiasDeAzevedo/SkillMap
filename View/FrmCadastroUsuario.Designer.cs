@@ -30,10 +30,6 @@
         {
             grbDadosUsuario = new GroupBox();
             txtDescricao = new TextBox();
-            pnlTipoUsuario = new Panel();
-            rdbInativo = new RadioButton();
-            rdbAtivo = new RadioButton();
-            lblTipoUsuario = new Label();
             txtConfirmarSenha = new TextBox();
             lblDescricao = new Label();
             lblConfirmarSenha = new Label();
@@ -50,14 +46,11 @@
             btnCadastrar = new Button();
             btnCancelar = new Button();
             grbDadosUsuario.SuspendLayout();
-            pnlTipoUsuario.SuspendLayout();
             SuspendLayout();
             // 
             // grbDadosUsuario
             // 
             grbDadosUsuario.Controls.Add(txtDescricao);
-            grbDadosUsuario.Controls.Add(pnlTipoUsuario);
-            grbDadosUsuario.Controls.Add(lblTipoUsuario);
             grbDadosUsuario.Controls.Add(txtConfirmarSenha);
             grbDadosUsuario.Controls.Add(lblDescricao);
             grbDadosUsuario.Controls.Add(lblConfirmarSenha);
@@ -89,52 +82,6 @@
             txtDescricao.PlaceholderText = "Conte as habilidades que possui, use a virgula para separar cada uma delas";
             txtDescricao.Size = new Size(475, 110);
             txtDescricao.TabIndex = 6;
-            // 
-            // pnlTipoUsuario
-            // 
-            pnlTipoUsuario.Controls.Add(rdbInativo);
-            pnlTipoUsuario.Controls.Add(rdbAtivo);
-            pnlTipoUsuario.Enabled = false;
-            pnlTipoUsuario.Location = new Point(532, 175);
-            pnlTipoUsuario.Margin = new Padding(4, 3, 4, 3);
-            pnlTipoUsuario.Name = "pnlTipoUsuario";
-            pnlTipoUsuario.Size = new Size(149, 37);
-            pnlTipoUsuario.TabIndex = 13;
-            // 
-            // rdbInativo
-            // 
-            rdbInativo.AutoSize = true;
-            rdbInativo.Location = new Point(75, 9);
-            rdbInativo.Margin = new Padding(4, 3, 4, 3);
-            rdbInativo.Name = "rdbInativo";
-            rdbInativo.Size = new Size(61, 19);
-            rdbInativo.TabIndex = 12;
-            rdbInativo.Text = "Inativo";
-            rdbInativo.UseVisualStyleBackColor = true;
-            // 
-            // rdbAtivo
-            // 
-            rdbAtivo.AutoSize = true;
-            rdbAtivo.Checked = true;
-            rdbAtivo.Location = new Point(9, 9);
-            rdbAtivo.Margin = new Padding(4, 3, 4, 3);
-            rdbAtivo.Name = "rdbAtivo";
-            rdbAtivo.Size = new Size(53, 19);
-            rdbAtivo.TabIndex = 11;
-            rdbAtivo.TabStop = true;
-            rdbAtivo.Text = "Ativo";
-            rdbAtivo.UseVisualStyleBackColor = true;
-            // 
-            // lblTipoUsuario
-            // 
-            lblTipoUsuario.AutoSize = true;
-            lblTipoUsuario.Enabled = false;
-            lblTipoUsuario.Location = new Point(532, 157);
-            lblTipoUsuario.Margin = new Padding(4, 0, 4, 0);
-            lblTipoUsuario.Name = "lblTipoUsuario";
-            lblTipoUsuario.Size = new Size(89, 15);
-            lblTipoUsuario.TabIndex = 10;
-            lblTipoUsuario.Text = "Tipo de Usuário";
             // 
             // txtConfirmarSenha
             // 
@@ -293,8 +240,6 @@
             Load += FrmCadastroUsuario_Load;
             grbDadosUsuario.ResumeLayout(false);
             grbDadosUsuario.PerformLayout();
-            pnlTipoUsuario.ResumeLayout(false);
-            pnlTipoUsuario.PerformLayout();
             ResumeLayout(false);
 
         }
@@ -313,10 +258,6 @@
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEnail;
-        private System.Windows.Forms.Panel pnlTipoUsuario;
-        private System.Windows.Forms.RadioButton rdbInativo;
-        private System.Windows.Forms.RadioButton rdbAtivo;
-        private System.Windows.Forms.Label lblTipoUsuario;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Label lblDescricao;
         private System.Windows.Forms.TextBox txtConfirmarSenha;

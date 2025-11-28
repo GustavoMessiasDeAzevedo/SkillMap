@@ -116,5 +116,18 @@ namespace SkillMap.Controller
                 MessageBox.Show("Erro ao listar usuários: " + ex.Message);
             }
         }
+
+        public void Atualizar(Usuario usuario)
+        {
+            try
+            {
+                _usuarioRepository.Atualizar(usuario);
+                MessageBox.Show("Usuário atualizado com sucesso.");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro ao atualizar: " + ex.Message);
+            }
+        }
     }
 }

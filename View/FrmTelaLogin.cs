@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using SkillMap.Model;
 using SkilMaps.View;
 
 namespace SkillMap.View
@@ -32,32 +34,47 @@ namespace SkillMap.View
                 return;
             }
 
-            string connectionString = "Server=MAR0625633W10-1;Database=SkillMap;User Id=sa;Password=senac2025;TrustServerCertificate=True;";
+            string connectionString = ConfigurationManager.ConnectionStrings["SkillMapDB"].ConnectionString;
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
                 {
-                    string query = "SELECT COUNT(*) FROM Usuarios WHERE email = @Email AND senha = @Senha";
+                    string query = @"SELECT Id, Nome, Email, Senha, Localizacao, Descricao
+                 FROM Usuarios
+                 WHERE email = @Email AND senha = @Senha";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@Senha", senha);
 
                     conn.Open();
-                    int count = (int)cmd.ExecuteScalar();
+                    SqlDataReader reader = cmd.ExecuteReader();
 
-                    if (count > 0)
+                    if (reader.Read())
                     {
+                        Usuario usuario = new Usuario
+                        {
+                            Id = reader.GetInt32(0),
+                            Nome = reader.GetString(1),
+                            Email = reader.GetString(2),
+                            Senha = reader.GetString(3),
+                            Localizacao = reader.IsDBNull(4) ? "" : reader.GetString(4),
+                            Descricao = reader.IsDBNull(5) ? "" : reader.GetString(5),
+                            
+                        };
+
+                        SessaoUsuario.UsuarioLogado = usuario;
+
                         this.Close();
                         FrmTelaPrincipal frmTelaPrincipal = new FrmTelaPrincipal();
                         frmTelaPrincipal.Show();
-                        
                     }
                     else
                     {
                         MessageBox.Show("E-mail ou senha incorretos!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                   
                 }
                 catch (Exception ex)
                 {

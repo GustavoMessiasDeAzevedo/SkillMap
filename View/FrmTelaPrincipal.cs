@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SkillMap.Controller;
 using SkillMap.Model;
 
+
 namespace SkillMap.View
 {
     public partial class FrmTelaPrincipal : Form
@@ -35,6 +36,12 @@ namespace SkillMap.View
         {
             string termo = txtPesquisar.Text.Trim();
             _usuarioController.ListarUsuarios(termo);
+        }
+
+        private void btnMeuPerfil_Click(object sender, EventArgs e)
+        {
+            FrmTelaPerfil frmTelaPerfil = new FrmTelaPerfil();
+            frmTelaPerfil.ShowDialog();
         }
     }
 }

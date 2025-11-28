@@ -29,30 +29,34 @@
         private void InitializeComponent()
         {
             gpbPerfilUsuario = new GroupBox();
+            cbxEstado = new ComboBox();
             btnExcluir = new Button();
             btnCancelar = new Button();
             btnEditar = new Button();
             btnSalvar = new Button();
             txtObservacaoUsuario = new TextBox();
             lblObservacao = new Label();
-            txtEstado = new TextBox();
             lblEstado = new Label();
             txtEmailUsuario = new TextBox();
             lblEmail = new Label();
             txtNomeUsuario = new TextBox();
             lblNome = new Label();
+            txtId = new TextBox();
+            lblCodigoUsuario = new Label();
             gpbPerfilUsuario.SuspendLayout();
             SuspendLayout();
             // 
             // gpbPerfilUsuario
             // 
+            gpbPerfilUsuario.Controls.Add(lblCodigoUsuario);
+            gpbPerfilUsuario.Controls.Add(txtId);
+            gpbPerfilUsuario.Controls.Add(cbxEstado);
             gpbPerfilUsuario.Controls.Add(btnExcluir);
             gpbPerfilUsuario.Controls.Add(btnCancelar);
             gpbPerfilUsuario.Controls.Add(btnEditar);
             gpbPerfilUsuario.Controls.Add(btnSalvar);
             gpbPerfilUsuario.Controls.Add(txtObservacaoUsuario);
             gpbPerfilUsuario.Controls.Add(lblObservacao);
-            gpbPerfilUsuario.Controls.Add(txtEstado);
             gpbPerfilUsuario.Controls.Add(lblEstado);
             gpbPerfilUsuario.Controls.Add(txtEmailUsuario);
             gpbPerfilUsuario.Controls.Add(lblEmail);
@@ -65,6 +69,16 @@
             gpbPerfilUsuario.TabStop = false;
             gpbPerfilUsuario.Text = "Perfil";
             // 
+            // cbxEstado
+            // 
+            cbxEstado.Enabled = false;
+            cbxEstado.FormattingEnabled = true;
+            cbxEstado.Items.AddRange(new object[] { "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espirito Santo", "Goiás", "Maranhão", "Mato Grosso do Sul", "Mato Grosso", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" });
+            cbxEstado.Location = new Point(16, 144);
+            cbxEstado.Name = "cbxEstado";
+            cbxEstado.Size = new Size(112, 23);
+            cbxEstado.TabIndex = 11;
+            // 
             // btnExcluir
             // 
             btnExcluir.Enabled = false;
@@ -74,6 +88,7 @@
             btnExcluir.TabIndex = 9;
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnCancelar
             // 
@@ -93,6 +108,7 @@
             btnEditar.TabIndex = 9;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnSalvar
             // 
@@ -103,6 +119,7 @@
             btnSalvar.TabIndex = 8;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // txtObservacaoUsuario
             // 
@@ -110,7 +127,6 @@
             txtObservacaoUsuario.Location = new Point(16, 192);
             txtObservacaoUsuario.Multiline = true;
             txtObservacaoUsuario.Name = "txtObservacaoUsuario";
-            txtObservacaoUsuario.ReadOnly = true;
             txtObservacaoUsuario.Size = new Size(512, 104);
             txtObservacaoUsuario.TabIndex = 7;
             // 
@@ -122,15 +138,6 @@
             lblObservacao.Size = new Size(69, 15);
             lblObservacao.TabIndex = 6;
             lblObservacao.Text = "Observação";
-            // 
-            // txtEstado
-            // 
-            txtEstado.Enabled = false;
-            txtEstado.Location = new Point(16, 144);
-            txtEstado.Name = "txtEstado";
-            txtEstado.ReadOnly = true;
-            txtEstado.Size = new Size(108, 23);
-            txtEstado.TabIndex = 5;
             // 
             // lblEstado
             // 
@@ -146,7 +153,6 @@
             txtEmailUsuario.Enabled = false;
             txtEmailUsuario.Location = new Point(16, 96);
             txtEmailUsuario.Name = "txtEmailUsuario";
-            txtEmailUsuario.ReadOnly = true;
             txtEmailUsuario.Size = new Size(512, 23);
             txtEmailUsuario.TabIndex = 3;
             // 
@@ -164,7 +170,6 @@
             txtNomeUsuario.Enabled = false;
             txtNomeUsuario.Location = new Point(16, 48);
             txtNomeUsuario.Name = "txtNomeUsuario";
-            txtNomeUsuario.ReadOnly = true;
             txtNomeUsuario.Size = new Size(512, 23);
             txtNomeUsuario.TabIndex = 1;
             // 
@@ -177,6 +182,23 @@
             lblNome.TabIndex = 0;
             lblNome.Text = "Nome";
             // 
+            // txtId
+            // 
+            txtId.Enabled = false;
+            txtId.Location = new Point(144, 144);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(88, 23);
+            txtId.TabIndex = 12;
+            // 
+            // lblCodigoUsuario
+            // 
+            lblCodigoUsuario.AutoSize = true;
+            lblCodigoUsuario.Location = new Point(144, 128);
+            lblCodigoUsuario.Name = "lblCodigoUsuario";
+            lblCodigoUsuario.Size = new Size(89, 15);
+            lblCodigoUsuario.TabIndex = 13;
+            lblCodigoUsuario.Text = "Código Usuário";
+            // 
             // FrmTelaPerfil
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -185,6 +207,7 @@
             Controls.Add(gpbPerfilUsuario);
             Name = "FrmTelaPerfil";
             Text = "Perfil do Usuário";
+            Load += FrmTelaPerfil_Load;
             gpbPerfilUsuario.ResumeLayout(false);
             gpbPerfilUsuario.PerformLayout();
             ResumeLayout(false);
@@ -193,7 +216,6 @@
         #endregion
 
         private GroupBox gpbPerfilUsuario;
-        private TextBox txtEstado;
         private Label lblEstado;
         private TextBox txtEmailUsuario;
         private Label lblEmail;
@@ -205,5 +227,8 @@
         private Button btnCancelar;
         private Button btnEditar;
         private Button btnSalvar;
+        private ComboBox cbxEstado;
+        private Label lblCodigoUsuario;
+        private TextBox txtId;
     }
 }

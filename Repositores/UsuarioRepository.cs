@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.DirectoryServices;
 using System.Linq;
 using System.Text;
@@ -73,8 +74,8 @@ namespace SkillMap.Repositores
             using (var conexao = ConexaoDB.GetConexao())
             {
                 string sql = @"
-                    INSERT INTO Usuarios (Nome, Email, Senha, Descricao, Localizacao, tipo_usuario)
-                    VALUES (@Nome, @Email, @Senha, @Descricao, @Localizacao, @tipo_usuario);
+                    INSERT INTO Usuarios (Nome, Email, Senha, Descricao, Localizacao)
+                    VALUES (@Nome, @Email, @Senha, @Descricao, @Localizacao);
                     SELECT SCOPE_IDENTITY();";
 
                 using (var comando = new SqlCommand(sql, conexao))
@@ -84,7 +85,7 @@ namespace SkillMap.Repositores
                     comando.Parameters.AddWithValue("@Senha", usuario.Senha);
                     comando.Parameters.AddWithValue("@Localizacao", usuario.Localizacao);
                     comando.Parameters.AddWithValue("@Descricao", usuario.Descricao);
-                    comando.Parameters.AddWithValue("@tipo_usuario", usuario.tipo_usuario);
+                    
                     conexao.Open();
 
                     var resultado = comando.ExecuteScalar();
@@ -103,17 +104,40 @@ namespace SkillMap.Repositores
 
         public void Excluir(int id)
         {
+            string connectionString = ConfigurationManager.ConnectionStrings["SkillMapDB"].ConnectionString;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "DELETE FROM Usuarios WHERE Id = @Id";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        
+        public void Atualizar(Usuario usuario)
+        {
             using (var conexao = ConexaoDB.GetConexao())
             {
-                string sql = "DELETE FROM Usuarios WHERE Id = @Id";
+                string sql = "UPDATE Usuarios SET nome = @nome, email = @email, descricao = @descricao, localizacao = @localizacao WHERE id = @id";
 
-                using (var comando = new SqlCommand(sql, conexao))
+                using(var comando = new SqlCommand(sql, conexao))
                 {
-                    comando.Parameters.AddWithValue("@Id", id);
+                    comando.Parameters.AddWithValue("@nome", usuario.Nome);
+                    comando.Parameters.AddWithValue("@email", usuario.Email);
+                    comando.Parameters.AddWithValue("@descricao", usuario.Descricao);
+                    comando.Parameters.AddWithValue("@localizacao", usuario.Localizacao);
+                    comando.Parameters.AddWithValue("@id", usuario.Id);
                     conexao.Open();
                     comando.ExecuteNonQuery();
                 }
             }
         }
-    }                                                                                                                                                                              
+
+    }
+        
+                                                                                                                                                                                  
 }
