@@ -69,6 +69,7 @@ namespace SkillMap.Repositores
         }
 
 
+
         public int Inserir(Usuario usuario)
         {
             using (var conexao = ConexaoDB.GetConexao())
@@ -137,6 +138,10 @@ namespace SkillMap.Repositores
             }
         }
 
+        internal static object BuscarPorId()
+        {
+            throw new NotImplementedException();
+        }
     }
         
                                                                                                                                                                                   

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             gpbPerfilUsuario = new GroupBox();
+            lblCodigoUsuario = new Label();
+            txtId = new TextBox();
             cbxEstado = new ComboBox();
             btnExcluir = new Button();
             btnCancelar = new Button();
@@ -41,8 +43,6 @@
             lblEmail = new Label();
             txtNomeUsuario = new TextBox();
             lblNome = new Label();
-            txtId = new TextBox();
-            lblCodigoUsuario = new Label();
             gpbPerfilUsuario.SuspendLayout();
             SuspendLayout();
             // 
@@ -69,6 +69,23 @@
             gpbPerfilUsuario.TabStop = false;
             gpbPerfilUsuario.Text = "Perfil";
             // 
+            // lblCodigoUsuario
+            // 
+            lblCodigoUsuario.AutoSize = true;
+            lblCodigoUsuario.Location = new Point(144, 128);
+            lblCodigoUsuario.Name = "lblCodigoUsuario";
+            lblCodigoUsuario.Size = new Size(89, 15);
+            lblCodigoUsuario.TabIndex = 13;
+            lblCodigoUsuario.Text = "Código Usuário";
+            // 
+            // txtId
+            // 
+            txtId.Enabled = false;
+            txtId.Location = new Point(144, 144);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(88, 23);
+            txtId.TabIndex = 12;
+            // 
             // cbxEstado
             // 
             cbxEstado.Enabled = false;
@@ -78,6 +95,7 @@
             cbxEstado.Name = "cbxEstado";
             cbxEstado.Size = new Size(112, 23);
             cbxEstado.TabIndex = 11;
+           
             // 
             // btnExcluir
             // 
@@ -181,23 +199,6 @@
             lblNome.Size = new Size(40, 15);
             lblNome.TabIndex = 0;
             lblNome.Text = "Nome";
-            // 
-            // txtId
-            // 
-            txtId.Enabled = false;
-            txtId.Location = new Point(144, 144);
-            txtId.Name = "txtId";
-            txtId.Size = new Size(88, 23);
-            txtId.TabIndex = 12;
-            // 
-            // lblCodigoUsuario
-            // 
-            lblCodigoUsuario.AutoSize = true;
-            lblCodigoUsuario.Location = new Point(144, 128);
-            lblCodigoUsuario.Name = "lblCodigoUsuario";
-            lblCodigoUsuario.Size = new Size(89, 15);
-            lblCodigoUsuario.TabIndex = 13;
-            lblCodigoUsuario.Text = "Código Usuário";
             // 
             // FrmTelaPerfil
             // 

@@ -114,20 +114,23 @@ namespace SkillMap.View
                 Localizacao = cbxEstado.Text,
                 Descricao = txtObservacaoUsuario.Text,
             };
-            
-            if(string.IsNullOrEmpty(txtId.Text))
+
+            if (string.IsNullOrEmpty(txtId.Text))
             {
                 MessageBox.Show("ID do usuário não encontrado.");
                 return;
-            }else
+            }
+            else
             {
                 usuario.Id = int.Parse(txtId.Text);
                 _usuarioController.Atualizar(usuario);
                 DesabilitarCampos();
             }
 
-                
+
         }
+
+       
     }
 
 
