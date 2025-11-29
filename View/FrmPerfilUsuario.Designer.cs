@@ -108,6 +108,7 @@
             // cbxEstado
             // 
             cbxEstado.FormattingEnabled = true;
+            cbxEstado.Items.AddRange(new object[] { "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espirito Santo", "Goiás", "Maranhão", "Mato Grosso do Sul", "Mato Grosso", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" });
             cbxEstado.Location = new Point(21, 160);
             cbxEstado.Name = "cbxEstado";
             cbxEstado.Size = new Size(121, 23);
@@ -119,7 +120,6 @@
             txtCodigoUsuario.Name = "txtCodigoUsuario";
             txtCodigoUsuario.Size = new Size(80, 23);
             txtCodigoUsuario.TabIndex = 3;
-           
             // 
             // txtEmail
             // 
