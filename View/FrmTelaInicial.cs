@@ -21,22 +21,7 @@ namespace SkillMap
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (SqlConnection conexao = ConexaoDB.GetConexao())
-                {
-                    conexao.Open();
-                    MessageBox.Show("Conexão bem-sucedida!");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao conectar: " + ex.Message);
-            }
-        }
+       
             
         private void btnCadastrar_Click(object sender, EventArgs e)
         {

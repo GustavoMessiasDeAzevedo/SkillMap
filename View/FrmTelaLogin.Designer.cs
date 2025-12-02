@@ -49,6 +49,8 @@
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(216, 23);
             txtSenha.TabIndex = 1;
+            txtSenha.UseSystemPasswordChar = true;
+            
             // 
             // lblEmail
             // 
@@ -103,6 +105,7 @@
             Controls.Add(txtEmail);
             Name = "FrmTelaLogin";
             Text = "Tela de Login";
+            Load += FrmTelaLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }

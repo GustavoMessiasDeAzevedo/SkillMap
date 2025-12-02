@@ -33,7 +33,6 @@ namespace SkillMap.View
             txtNome.Text = usuario.Nome;
             txtEmail.Text = usuario.Email;
             cbxEstado.SelectedItem = usuario.Estado;
-            txtCodigoUsuario.Text = usuario.Id.ToString();
             txtObservacao.Text = usuario.Observacao;
         }
 
@@ -42,11 +41,15 @@ namespace SkillMap.View
             txtNome.ReadOnly = true;
             txtEmail.ReadOnly = true;
             cbxEstado.Enabled = false;
-            txtCodigoUsuario.ReadOnly = true;
             txtObservacao.ReadOnly = true;
 
         }
 
-        
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+           this.Close();
+            FrmTelaPrincipal frmTelaPrincipal = new FrmTelaPrincipal();
+            frmTelaPrincipal.Show();
+        }
     }
 }

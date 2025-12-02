@@ -40,8 +40,8 @@ namespace SkillMap.View
 
         private void btnMeuPerfil_Click(object sender, EventArgs e)
         {
-           FrmPerfilUsuario frmPerfilUsuario = new FrmPerfilUsuario();
-            frmPerfilUsuario.ShowDialog();
+            FrmTelaPerfil frmTelaPerfil = new FrmTelaPerfil();
+            frmTelaPerfil.Show();
         }
     }
 }

@@ -61,7 +61,7 @@ namespace SkillMap.View
                             Senha = reader.GetString(3),
                             Localizacao = reader.IsDBNull(4) ? "" : reader.GetString(4),
                             Descricao = reader.IsDBNull(5) ? "" : reader.GetString(5),
-                            
+
                         };
 
                         SessaoUsuario.UsuarioLogado = usuario;
@@ -74,7 +74,7 @@ namespace SkillMap.View
                     {
                         MessageBox.Show("E-mail ou senha incorretos!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                   
+
                 }
                 catch (Exception ex)
                 {
@@ -88,6 +88,13 @@ namespace SkillMap.View
             FrmCadastroUsuario frmCadastro = new FrmCadastroUsuario();
             frmCadastro.Show();
         }
+
+        private void FrmTelaLogin_Load(object sender, EventArgs e)
+        {
+            txtSenha.UseSystemPasswordChar = true;
+        }
+
+       
     }
 }
 

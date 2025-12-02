@@ -28,43 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             grbPerfilUsuario = new GroupBox();
+            btnVoltar = new Button();
             lblObservacao = new Label();
             txtObservacao = new TextBox();
             lblEstado = new Label();
-            lblCodigoUsuario = new Label();
             lblEmail = new Label();
             cbxEstado = new ComboBox();
-            txtCodigoUsuario = new TextBox();
             txtEmail = new TextBox();
             txtNome = new TextBox();
             lblNome = new Label();
+            imlIcones = new ImageList(components);
             grbPerfilUsuario.SuspendLayout();
             SuspendLayout();
             // 
             // grbPerfilUsuario
             // 
+            grbPerfilUsuario.Controls.Add(btnVoltar);
             grbPerfilUsuario.Controls.Add(lblObservacao);
             grbPerfilUsuario.Controls.Add(txtObservacao);
             grbPerfilUsuario.Controls.Add(lblEstado);
-            grbPerfilUsuario.Controls.Add(lblCodigoUsuario);
             grbPerfilUsuario.Controls.Add(lblEmail);
             grbPerfilUsuario.Controls.Add(cbxEstado);
-            grbPerfilUsuario.Controls.Add(txtCodigoUsuario);
             grbPerfilUsuario.Controls.Add(txtEmail);
             grbPerfilUsuario.Controls.Add(txtNome);
             grbPerfilUsuario.Controls.Add(lblNome);
             grbPerfilUsuario.Location = new Point(8, 16);
             grbPerfilUsuario.Name = "grbPerfilUsuario";
-            grbPerfilUsuario.Size = new Size(496, 368);
+            grbPerfilUsuario.Size = new Size(496, 392);
             grbPerfilUsuario.TabIndex = 0;
             grbPerfilUsuario.TabStop = false;
             grbPerfilUsuario.Text = "Perfil do Usuário";
             // 
+            // btnVoltar
+            // 
+            btnVoltar.Location = new Point(21, 352);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.Size = new Size(75, 31);
+            btnVoltar.TabIndex = 10;
+            btnVoltar.Text = "Voltar";
+            btnVoltar.UseVisualStyleBackColor = true;
+            btnVoltar.Click += btnVoltar_Click;
+            // 
             // lblObservacao
             // 
             lblObservacao.AutoSize = true;
-            lblObservacao.Location = new Point(19, 210);
+            lblObservacao.Location = new Point(17, 197);
             lblObservacao.Name = "lblObservacao";
             lblObservacao.Size = new Size(69, 15);
             lblObservacao.TabIndex = 9;
@@ -72,7 +82,7 @@
             // 
             // txtObservacao
             // 
-            txtObservacao.Location = new Point(19, 230);
+            txtObservacao.Location = new Point(19, 216);
             txtObservacao.Multiline = true;
             txtObservacao.Name = "txtObservacao";
             txtObservacao.Size = new Size(464, 122);
@@ -81,20 +91,11 @@
             // lblEstado
             // 
             lblEstado.AutoSize = true;
-            lblEstado.Location = new Point(18, 144);
+            lblEstado.Location = new Point(19, 139);
             lblEstado.Name = "lblEstado";
             lblEstado.Size = new Size(42, 15);
             lblEstado.TabIndex = 7;
             lblEstado.Text = "Estado";
-            // 
-            // lblCodigoUsuario
-            // 
-            lblCodigoUsuario.AutoSize = true;
-            lblCodigoUsuario.Location = new Point(171, 144);
-            lblCodigoUsuario.Name = "lblCodigoUsuario";
-            lblCodigoUsuario.Size = new Size(106, 15);
-            lblCodigoUsuario.TabIndex = 6;
-            lblCodigoUsuario.Text = "Código do Usuário";
             // 
             // lblEmail
             // 
@@ -109,17 +110,10 @@
             // 
             cbxEstado.FormattingEnabled = true;
             cbxEstado.Items.AddRange(new object[] { "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espirito Santo", "Goiás", "Maranhão", "Mato Grosso do Sul", "Mato Grosso", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" });
-            cbxEstado.Location = new Point(21, 160);
+            cbxEstado.Location = new Point(21, 156);
             cbxEstado.Name = "cbxEstado";
             cbxEstado.Size = new Size(121, 23);
             cbxEstado.TabIndex = 4;
-            // 
-            // txtCodigoUsuario
-            // 
-            txtCodigoUsuario.Location = new Point(174, 160);
-            txtCodigoUsuario.Name = "txtCodigoUsuario";
-            txtCodigoUsuario.Size = new Size(80, 23);
-            txtCodigoUsuario.TabIndex = 3;
             // 
             // txtEmail
             // 
@@ -144,11 +138,17 @@
             lblNome.TabIndex = 0;
             lblNome.Text = "Nome";
             // 
+            // imlIcones
+            // 
+            imlIcones.ColorDepth = ColorDepth.Depth32Bit;
+            imlIcones.ImageSize = new Size(16, 16);
+            imlIcones.TransparentColor = Color.Transparent;
+            // 
             // FrmPerfilUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(517, 403);
+            ClientSize = new Size(517, 418);
             Controls.Add(grbPerfilUsuario);
             Name = "FrmPerfilUsuario";
             Text = "FrmPerfilUsuario";
@@ -161,15 +161,15 @@
         #endregion
 
         private GroupBox grbPerfilUsuario;
-        private TextBox txtCodigoUsuario;
         private TextBox txtEmail;
         private TextBox txtNome;
         private Label lblNome;
-        private Label lblCodigoUsuario;
         private Label lblEmail;
         private ComboBox cbxEstado;
         private TextBox txtObservacao;
         private Label lblEstado;
         private Label lblObservacao;
+        private Button btnVoltar;
+        private ImageList imlIcones;
     }
 }
