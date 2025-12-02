@@ -77,9 +77,13 @@
             // 
             dgvPesquisaHabilidade.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPesquisaHabilidade.Location = new Point(16, 80);
+            dgvPesquisaHabilidade.MultiSelect = false;
             dgvPesquisaHabilidade.Name = "dgvPesquisaHabilidade";
+            dgvPesquisaHabilidade.ReadOnly = true;
+            dgvPesquisaHabilidade.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvPesquisaHabilidade.Size = new Size(504, 208);
-            dgvPesquisaHabilidade.TabIndex = 3;
+            dgvPesquisaHabilidade.TabIndex = 0;
+            dgvPesquisaHabilidade.CellDoubleClick += dgvPesquisaHabilidade_CellContentDoubleClick;
             // 
             // btnPesquisar
             // 

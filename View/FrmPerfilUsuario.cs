@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SkillMap.Controller;
 using SkillMap.Model;
 using SkillMap.Repositores;
 
@@ -14,16 +15,26 @@ namespace SkillMap.View
 {
     public partial class FrmPerfilUsuario : Form
     {
-        UsuarioRepository usuarioRepository = new UsuarioRepository();
+        private UsuarioController _usuarioController;
+
+        private int? _usuarioId;
         public FrmPerfilUsuario()
         {
             InitializeComponent();
+            _usuarioController = new UsuarioController(this);
         }
 
         private void FrmPerfilUsuario_Load(object sender, EventArgs e)
         {
             CarregarDadosDoUsuario();
             BloquearCampos();
+
+            if (_usuarioId.HasValue)
+            {
+                var usuario = _usuarioController.BuscarPerfilPorId(_usuarioId.Value);
+            }
+
+
         }
 
         private void CarregarDadosDoUsuario()
@@ -32,8 +43,8 @@ namespace SkillMap.View
 
             txtNome.Text = usuario.Nome;
             txtEmail.Text = usuario.Email;
-            cbxEstado.SelectedItem = usuario.Estado;
-            txtObservacao.Text = usuario.Observacao;
+            cbxEstado.SelectedItem = usuario.Localizacao;
+            txtObservacao.Text = usuario.Descricao;
         }
 
         private void BloquearCampos()

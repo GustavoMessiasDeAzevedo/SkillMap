@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SkillMap.Controller;
 using SkillMap.Model;
+using SkillMap.Repositores;
 
 
 namespace SkillMap.View
@@ -16,6 +17,8 @@ namespace SkillMap.View
     public partial class FrmTelaPrincipal : Form
     {
         private UsuarioController _usuarioController;
+
+        
         public FrmTelaPrincipal()
         {
             InitializeComponent();
@@ -42,6 +45,22 @@ namespace SkillMap.View
         {
             FrmTelaPerfil frmTelaPerfil = new FrmTelaPerfil();
             frmTelaPerfil.Show();
+        }
+
+
+
+        private void dgvPesquisaHabilidade_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int id = (int)dgvPesquisaHabilidade.Rows[e.RowIndex].Cells["Id"].Value;
+                FrmPerfilUsuario frmPerfilUsuario = new FrmPerfilUsuario();
+
+                this.Hide();
+                frmPerfilUsuario.ShowDialog();
+                this.Close();
+
+            }
         }
     }
 }

@@ -14,11 +14,9 @@ namespace SkillMap.Model
         public string? Senha { get; set; }
         public string? Localizacao { get; set; }
         public string? Descricao { get; set; }
-        
 
 
-        public List<Habilidades> UsuarioHabilidades { get; set; } = new List<Habilidades>();
-        public string Estado { get; internal set; }
-        public string? Observacao { get; internal set; }
+
+        public string? Habilidades { get; set; }
     }
 }

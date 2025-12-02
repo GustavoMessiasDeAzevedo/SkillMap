@@ -56,6 +56,7 @@ namespace SkillMap.Repositores
                         {
                             lista.Add(new Usuario
                             {
+                                Id = Convert.ToInt32(linhas["Id"]),
                                 Nome = linhas["Nome_Usuario"].ToString(),
                                 Descricao = linhas["Habilidades"] == DBNull.Value ? "" : linhas["Habilidades"].ToString(),
                                 Localizacao = linhas["Estado"].ToString()
@@ -86,7 +87,7 @@ namespace SkillMap.Repositores
                     comando.Parameters.AddWithValue("@Senha", usuario.Senha);
                     comando.Parameters.AddWithValue("@Localizacao", usuario.Localizacao);
                     comando.Parameters.AddWithValue("@Descricao", usuario.Descricao);
-                    
+
                     conexao.Open();
 
                     var resultado = comando.ExecuteScalar();
@@ -118,14 +119,14 @@ namespace SkillMap.Repositores
                 cmd.ExecuteNonQuery();
             }
         }
-        
+
         public void Atualizar(Usuario usuario)
         {
             using (var conexao = ConexaoDB.GetConexao())
             {
                 string sql = "UPDATE Usuarios SET nome = @nome, email = @email, descricao = @descricao, localizacao = @localizacao WHERE id = @id";
 
-                using(var comando = new SqlCommand(sql, conexao))
+                using (var comando = new SqlCommand(sql, conexao))
                 {
                     comando.Parameters.AddWithValue("@nome", usuario.Nome);
                     comando.Parameters.AddWithValue("@email", usuario.Email);
@@ -138,11 +139,52 @@ namespace SkillMap.Repositores
             }
         }
 
-        internal static object BuscarPorId()
+        public  Usuario?  BuscarId(int id)
         {
-            throw new NotImplementedException();
+            using (var conexao = ConexaoDB.GetConexao())
+            {
+                string sql = @"
+            SELECT 
+                u.Id,
+                u.Nome,
+                u.Email,
+                u.Descricao,
+                u.Localizacao,
+                STRING_AGG(h.Nome, ', ') AS Habilidades
+            FROM Usuarios u
+            LEFT JOIN Habilidade_Usuarios hu ON u.Id = hu.usuario_id
+            LEFT JOIN Habilidades h ON h.habilidade_id = hu.habilidade_id
+            WHERE u.Id = @Id
+            GROUP BY u.Id, u.Nome, u.Email, u.Descricao, u.Localizacao
+        ";
+
+                using (var comando = new SqlCommand(sql, conexao))
+                {
+                    comando.Parameters.AddWithValue("@Id", id);
+                    conexao.Open();
+
+                    using (var reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Usuario
+                            {
+                                Id = (int)reader["Id"],
+                                Nome = reader["Nome"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                Descricao = reader["Descricao"].ToString(),
+                                Localizacao = reader["Localizacao"].ToString(),
+                                Habilidades = reader["Habilidades"] == DBNull.Value
+                                    ? ""
+                                    : reader["Habilidades"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+
+            return null;
         }
+
     }
-        
-                                                                                                                                                                                  
-}
+    }
