@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -130,7 +131,29 @@ namespace SkillMap.View
 
         }
 
-       
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            FrmTelaPrincipal frmTelaPrincipal = new FrmTelaPrincipal();
+            this.Close();
+        }
+
+
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+            DesabilitarCampos();
+
+            txtNomeUsuario.ReadOnly = true;
+            txtEmailUsuario.ReadOnly = true;
+            cbxEstado.Enabled = false;
+            txtObservacaoUsuario.ReadOnly = true;
+            btnEditar.Enabled = true;
+            btnExcluir.Enabled = false;
+            btnSalvar.Enabled = false;
+
+
+        }
     }
 
 

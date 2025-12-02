@@ -18,7 +18,7 @@ namespace SkillMap.View
     {
         private UsuarioController _usuarioController;
 
-        
+
         public FrmTelaPrincipal()
         {
             InitializeComponent();
@@ -61,6 +61,14 @@ namespace SkillMap.View
                 this.Close();
 
             }
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+           FrmTelaInicial frmTelaInicial = new FrmTelaInicial();
+            frmTelaInicial.Show();
+            this.Close();
+
         }
     }
 }

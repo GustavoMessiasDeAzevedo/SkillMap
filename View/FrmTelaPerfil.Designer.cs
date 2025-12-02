@@ -43,6 +43,7 @@
             lblEmail = new Label();
             txtNomeUsuario = new TextBox();
             lblNome = new Label();
+            btnVoltar = new Button();
             gpbPerfilUsuario.SuspendLayout();
             SuspendLayout();
             // 
@@ -116,6 +117,7 @@
             btnCancelar.TabIndex = 10;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnEditar
             // 
@@ -199,11 +201,22 @@
             lblNome.TabIndex = 0;
             lblNome.Text = "Nome";
             // 
+            // btnVoltar
+            // 
+            btnVoltar.Location = new Point(416, 392);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.Size = new Size(120, 40);
+            btnVoltar.TabIndex = 1;
+            btnVoltar.Text = "Voltar";
+            btnVoltar.UseVisualStyleBackColor = true;
+            btnVoltar.Click += btnVoltar_Click;
+            // 
             // FrmTelaPerfil
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(563, 450);
+            Controls.Add(btnVoltar);
             Controls.Add(gpbPerfilUsuario);
             Name = "FrmTelaPerfil";
             Text = "Meu Perfil";
@@ -230,5 +243,6 @@
         private ComboBox cbxEstado;
         private TextBox txtId;
         private Label lblCodigoUsuario;
+        private Button btnVoltar;
     }
 }
