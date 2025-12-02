@@ -95,7 +95,6 @@
             cbxEstado.Name = "cbxEstado";
             cbxEstado.Size = new Size(112, 23);
             cbxEstado.TabIndex = 11;
-           
             // 
             // btnExcluir
             // 
@@ -207,7 +206,7 @@
             ClientSize = new Size(563, 450);
             Controls.Add(gpbPerfilUsuario);
             Name = "FrmTelaPerfil";
-            Text = "Perfil do Usuário";
+            Text = "Meu Perfil";
             Load += FrmTelaPerfil_Load;
             gpbPerfilUsuario.ResumeLayout(false);
             gpbPerfilUsuario.PerformLayout();

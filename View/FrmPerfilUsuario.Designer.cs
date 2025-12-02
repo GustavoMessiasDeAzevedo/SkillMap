@@ -32,10 +32,8 @@
             lblObservacao = new Label();
             txtObservacao = new TextBox();
             lblEstado = new Label();
-            lblCodigoUsuario = new Label();
             lblEmail = new Label();
             cbxEstado = new ComboBox();
-            txtCodigoUsuario = new TextBox();
             txtEmail = new TextBox();
             txtNome = new TextBox();
             lblNome = new Label();
@@ -47,10 +45,8 @@
             grbPerfilUsuario.Controls.Add(lblObservacao);
             grbPerfilUsuario.Controls.Add(txtObservacao);
             grbPerfilUsuario.Controls.Add(lblEstado);
-            grbPerfilUsuario.Controls.Add(lblCodigoUsuario);
             grbPerfilUsuario.Controls.Add(lblEmail);
             grbPerfilUsuario.Controls.Add(cbxEstado);
-            grbPerfilUsuario.Controls.Add(txtCodigoUsuario);
             grbPerfilUsuario.Controls.Add(txtEmail);
             grbPerfilUsuario.Controls.Add(txtNome);
             grbPerfilUsuario.Controls.Add(lblNome);
@@ -87,15 +83,6 @@
             lblEstado.TabIndex = 7;
             lblEstado.Text = "Estado";
             // 
-            // lblCodigoUsuario
-            // 
-            lblCodigoUsuario.AutoSize = true;
-            lblCodigoUsuario.Location = new Point(171, 144);
-            lblCodigoUsuario.Name = "lblCodigoUsuario";
-            lblCodigoUsuario.Size = new Size(106, 15);
-            lblCodigoUsuario.TabIndex = 6;
-            lblCodigoUsuario.Text = "Código do Usuário";
-            // 
             // lblEmail
             // 
             lblEmail.AutoSize = true;
@@ -113,13 +100,6 @@
             cbxEstado.Name = "cbxEstado";
             cbxEstado.Size = new Size(121, 23);
             cbxEstado.TabIndex = 4;
-            // 
-            // txtCodigoUsuario
-            // 
-            txtCodigoUsuario.Location = new Point(174, 160);
-            txtCodigoUsuario.Name = "txtCodigoUsuario";
-            txtCodigoUsuario.Size = new Size(80, 23);
-            txtCodigoUsuario.TabIndex = 3;
             // 
             // txtEmail
             // 
@@ -161,11 +141,9 @@
         #endregion
 
         private GroupBox grbPerfilUsuario;
-        private TextBox txtCodigoUsuario;
         private TextBox txtEmail;
         private TextBox txtNome;
         private Label lblNome;
-        private Label lblCodigoUsuario;
         private Label lblEmail;
         private ComboBox cbxEstado;
         private TextBox txtObservacao;

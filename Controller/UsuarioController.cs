@@ -14,6 +14,7 @@ namespace SkillMap.Controller
         private FrmTelaPrincipal _frmTelaPrincipal;
         private FrmTelaPerfil _frmTelaPerfil;
         private UsuarioRepository _usuarioRepository;
+        private FrmPerfilUsuario frmPerfilUsuario;
 
         // Construtor para Cadastro
         public UsuarioController(FrmCadastroUsuario view)
@@ -34,6 +35,11 @@ namespace SkillMap.Controller
         {
             _frmTelaPerfil = view;
             _usuarioRepository = new UsuarioRepository();
+        }
+
+        public UsuarioController(FrmPerfilUsuario frmPerfilUsuario)
+        {
+            this.frmPerfilUsuario = frmPerfilUsuario;
         }
 
         // ===== SALVAR =====
@@ -104,6 +110,7 @@ namespace SkillMap.Controller
 
                 var listaDataGridView = listaUsuario.Select(u => new ListagemUsuario
                 {
+                    Id = u.Id,
                     Nome = u.Nome,
                     Habilidades = u.Descricao,
                     Estado = u.Localizacao
@@ -129,5 +136,12 @@ namespace SkillMap.Controller
                 MessageBox.Show("Erro ao atualizar: " + ex.Message);
             }
         }
+
+        public Usuario? BuscarPerfilPorId(int id)
+        {
+            return _usuarioRepository.BuscarId(id);
+        }
+
     }
+
 }
