@@ -72,6 +72,7 @@
             Controls.Add(btnCadastrar);
             Controls.Add(btnLogin);
             Name = "FrmTelaInicial";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Tela Inicial";
             TopMost = true;
             ResumeLayout(false);

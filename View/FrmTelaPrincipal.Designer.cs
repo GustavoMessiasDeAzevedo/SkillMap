@@ -119,6 +119,7 @@
             ClientSize = new Size(571, 411);
             Controls.Add(gpbTelaInicial);
             Name = "FrmTelaPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmTelaPrincipal";
             Load += FrmTelaPrincipal_Load;
             gpbTelaInicial.ResumeLayout(false);

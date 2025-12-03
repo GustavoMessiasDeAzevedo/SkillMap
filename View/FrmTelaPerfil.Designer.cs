@@ -219,6 +219,7 @@
             Controls.Add(btnVoltar);
             Controls.Add(gpbPerfilUsuario);
             Name = "FrmTelaPerfil";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Meu Perfil";
             Load += FrmTelaPerfil_Load;
             gpbPerfilUsuario.ResumeLayout(false);

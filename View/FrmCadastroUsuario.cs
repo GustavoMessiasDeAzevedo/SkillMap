@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SkillMap;
 using SkillMap.Controller;
 using SkillMap.Model;
 
@@ -52,7 +53,10 @@ namespace SkilMaps.View
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            LimparCampos();
+            this.Hide();
+            FrmTelaInicial frmTelaInicial = new FrmTelaInicial();
+            frmTelaInicial.Show();
         }
 
         public string SenhaConfirmacao

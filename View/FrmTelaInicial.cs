@@ -27,6 +27,7 @@ namespace SkillMap
         {
             FrmCadastroUsuario frmCadastro = new FrmCadastroUsuario();
             frmCadastro.Show();
+            this.Hide();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -35,5 +36,7 @@ namespace SkillMap
             frmLogin.Show();
             this.Hide();
         }
+
+
     }
 }

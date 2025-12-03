@@ -151,6 +151,7 @@
             ClientSize = new Size(517, 418);
             Controls.Add(grbPerfilUsuario);
             Name = "FrmPerfilUsuario";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmPerfilUsuario";
             Load += FrmPerfilUsuario_Load;
             grbPerfilUsuario.ResumeLayout(false);

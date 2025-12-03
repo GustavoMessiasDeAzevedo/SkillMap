@@ -236,6 +236,7 @@
             Controls.Add(grbDadosUsuario);
             Margin = new Padding(4, 3, 4, 3);
             Name = "FrmCadastroUsuario";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro de Usuários";
             Load += FrmCadastroUsuario_Load;
             grbDadosUsuario.ResumeLayout(false);
