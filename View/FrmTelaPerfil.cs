@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using SkillMap.Controller;
 using SkillMap.Model;
 using SkillMap.Repositores;
@@ -98,11 +99,12 @@ namespace SkillMap.View
 
                 SessaoUsuario.UsuarioLogado = null;
 
+                this.Hide();
                 // Fechar todas as telas e voltar para login
                 FrmTelaLogin telaLogin = new FrmTelaLogin();
                 telaLogin.Show();
 
-                this.Close();
+                
             }
         }
 

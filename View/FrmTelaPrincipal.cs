@@ -43,8 +43,10 @@ namespace SkillMap.View
 
         private void btnMeuPerfil_Click(object sender, EventArgs e)
         {
+            this.Hide();
             FrmTelaPerfil frmTelaPerfil = new FrmTelaPerfil();
             frmTelaPerfil.Show();
+           
         }
 
 
