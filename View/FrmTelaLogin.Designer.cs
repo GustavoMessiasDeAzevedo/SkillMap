@@ -104,7 +104,7 @@
             Controls.Add(txtEmail);
             Name = "FrmTelaLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Tela de Login";
+            Text = "Login";
             Load += FrmTelaLogin_Load;
             ResumeLayout(false);
             PerformLayout();

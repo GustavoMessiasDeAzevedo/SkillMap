@@ -152,7 +152,7 @@
             Controls.Add(grbPerfilUsuario);
             Name = "FrmPerfilUsuario";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmPerfilUsuario";
+            Text = "Perfil Usuário";
             Load += FrmPerfilUsuario_Load;
             grbPerfilUsuario.ResumeLayout(false);
             grbPerfilUsuario.PerformLayout();
