@@ -121,6 +121,7 @@
             Name = "FrmTelaPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Tela Principal";
+            FormClosed += FrmTelaPrincipal_FormClosed;
             Load += FrmTelaPrincipal_Load;
             gpbTelaInicial.ResumeLayout(false);
             gpbTelaInicial.PerformLayout();

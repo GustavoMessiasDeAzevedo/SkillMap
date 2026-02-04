@@ -43,8 +43,12 @@ namespace SkillMap.View
 
         private void btnMeuPerfil_Click(object sender, EventArgs e)
         {
-            FrmTelaPerfil frmTelaPerfil = new FrmTelaPerfil();
-            frmTelaPerfil.Show();
+            this.Hide();
+            using (FrmTelaPerfil frmTelaPerfil = new FrmTelaPerfil())
+            {
+                frmTelaPerfil.Show();
+            }
+
         }
 
 
@@ -57,7 +61,7 @@ namespace SkillMap.View
                 FrmPerfilUsuario frmPerfilUsuario = new FrmPerfilUsuario();
 
                 this.Hide();
-                frmPerfilUsuario.ShowDialog();
+                frmPerfilUsuario.Show();
                 this.Close();
 
             }
@@ -65,10 +69,15 @@ namespace SkillMap.View
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-           FrmTelaInicial frmTelaInicial = new FrmTelaInicial();
-            frmTelaInicial.Show();
-            this.Close();
 
+            this.Close();
+            Application.Restart();
+
+        }
+
+        private void FrmTelaPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

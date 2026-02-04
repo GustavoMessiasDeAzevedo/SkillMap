@@ -238,6 +238,7 @@
             Name = "FrmCadastroUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro";
+            FormClosed += FrmCadastroUsuario_FormClosed;
             Load += FrmCadastroUsuario_Load;
             grbDadosUsuario.ResumeLayout(false);
             grbDadosUsuario.PerformLayout();

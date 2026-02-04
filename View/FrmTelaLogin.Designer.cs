@@ -105,6 +105,7 @@
             Name = "FrmTelaLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            FormClosed += FrmTelaLogin_FormClosed;
             Load += FrmTelaLogin_Load;
             ResumeLayout(false);
             PerformLayout();

@@ -32,6 +32,7 @@ namespace SkillMap
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            this.Show();
             FrmTelaLogin frmLogin = new FrmTelaLogin();
             frmLogin.Show();
             this.Hide();
