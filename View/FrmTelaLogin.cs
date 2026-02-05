@@ -100,6 +100,12 @@ namespace SkillMap.View
         {
             Application.Exit();
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmAlterarSenha frmAlterarSenha = new FrmAlterarSenha();
+            frmAlterarSenha.Show();
+        }
     }
 }
 

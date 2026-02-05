@@ -186,5 +186,47 @@ namespace SkillMap.Repositores
             return null;
         }
 
+        public void AlterarSenha(string email, string senha)
+        {
+            using (var conexao = ConexaoDB.GetConexao())
+            {
+                string sql = @"UPDATE Usuarios SET senha = @senha WHERE email = @email";
+
+                using (var comando = new SqlCommand(sql, conexao))
+                {
+                    comando.Parameters.AddWithValue("@senha", senha);
+                    comando.Parameters.AddWithValue("@email", email);
+                    conexao.Open();
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public Usuario? BuscarPorEmail(string email)
+        {
+            using (var conexao = ConexaoDB.GetConexao())
+            {
+                string sql = @"SELECT email FROM Usuarios";
+                using (var comando = new SqlCommand(sql, conexao))
+                {
+                    conexao.Open();
+                    using (var reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (reader["email"].ToString() == email)
+                            {
+                                return new Usuario
+                                {
+                                    Email = reader["email"].ToString()
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
     }
-    }
+}

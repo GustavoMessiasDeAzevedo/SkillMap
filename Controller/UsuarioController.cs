@@ -15,11 +15,18 @@ namespace SkillMap.Controller
         private FrmTelaPerfil _frmTelaPerfil;
         private UsuarioRepository _usuarioRepository;
         private FrmPerfilUsuario frmPerfilUsuario;
+        private FrmAlterarSenha _frmAlterarSenha;
 
         // Construtor para Cadastro
         public UsuarioController(FrmCadastroUsuario view)
         {
             _frmCadastroUsuario = view;
+            _usuarioRepository = new UsuarioRepository();
+        }
+
+        public UsuarioController(FrmAlterarSenha view)
+        {
+            _frmAlterarSenha = view;
             _usuarioRepository = new UsuarioRepository();
         }
 
@@ -140,6 +147,25 @@ namespace SkillMap.Controller
         public Usuario? BuscarPerfilPorId(int id)
         {
             return _usuarioRepository.BuscarId(id);
+        }
+        
+        public Usuario? BuscarPorEmail(string email)
+        {
+            return _usuarioRepository.BuscarPorEmail(email);
+        }
+
+        public void AlterarSenha(string email, string senha)
+        {
+            try
+            {
+                _usuarioRepository.AlterarSenha(email,senha);
+                MessageBox.Show("Senha alterada com sucesso.");
+                _frmAlterarSenha.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao alterar senha: " + ex.Message);
+            }
         }
 
     }
