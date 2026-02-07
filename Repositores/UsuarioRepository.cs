@@ -206,7 +206,7 @@ namespace SkillMap.Repositores
         {
             using (var conexao = ConexaoDB.GetConexao())
             {
-                string sql = @"SELECT email FROM Usuarios";
+                string sql = @"SELECT Id, email FROM Usuarios";
                 using (var comando = new SqlCommand(sql, conexao))
                 {
                     conexao.Open();
@@ -218,6 +218,7 @@ namespace SkillMap.Repositores
                             {
                                 return new Usuario
                                 {
+                                    Id = Convert.ToInt32(reader["Id"]),
                                     Email = reader["email"].ToString()
                                 };
                             }

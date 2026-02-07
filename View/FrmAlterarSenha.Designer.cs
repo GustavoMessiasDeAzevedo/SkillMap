@@ -32,8 +32,10 @@
             txtEmailAlterarSenha = new TextBox();
             label2 = new Label();
             txtNovaSenha = new TextBox();
-            btnValidarEmail = new Button();
+            btnGerarCodigo = new Button();
             btnAlterarSenha = new Button();
+            txtCodigo = new TextBox();
+            label3 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -57,7 +59,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(120, 96);
+            label2.Location = new Point(120, 224);
             label2.Name = "label2";
             label2.Size = new Size(92, 21);
             label2.TabIndex = 2;
@@ -66,25 +68,25 @@
             // txtNovaSenha
             // 
             txtNovaSenha.Enabled = false;
-            txtNovaSenha.Location = new Point(24, 128);
+            txtNovaSenha.Location = new Point(24, 256);
             txtNovaSenha.Name = "txtNovaSenha";
             txtNovaSenha.Size = new Size(296, 23);
             txtNovaSenha.TabIndex = 3;
             // 
-            // btnValidarEmail
+            // btnGerarCodigo
             // 
-            btnValidarEmail.Location = new Point(96, 168);
-            btnValidarEmail.Name = "btnValidarEmail";
-            btnValidarEmail.Size = new Size(144, 32);
-            btnValidarEmail.TabIndex = 4;
-            btnValidarEmail.Text = "Validar E-mail";
-            btnValidarEmail.UseVisualStyleBackColor = true;
-            btnValidarEmail.Click += btnValidarEmail_Click;
+            btnGerarCodigo.Location = new Point(96, 104);
+            btnGerarCodigo.Name = "btnGerarCodigo";
+            btnGerarCodigo.Size = new Size(144, 32);
+            btnGerarCodigo.TabIndex = 4;
+            btnGerarCodigo.Text = "Gerar código";
+            btnGerarCodigo.UseVisualStyleBackColor = true;
+            btnGerarCodigo.Click += btnValidarEmail_Click;
             // 
             // btnAlterarSenha
             // 
             btnAlterarSenha.Enabled = false;
-            btnAlterarSenha.Location = new Point(96, 208);
+            btnAlterarSenha.Location = new Point(96, 288);
             btnAlterarSenha.Name = "btnAlterarSenha";
             btnAlterarSenha.Size = new Size(144, 32);
             btnAlterarSenha.TabIndex = 5;
@@ -92,13 +94,33 @@
             btnAlterarSenha.UseVisualStyleBackColor = true;
             btnAlterarSenha.Click += btnAlterarSenha_Click;
             // 
+            // txtCodigo
+            // 
+            txtCodigo.Enabled = false;
+            txtCodigo.Location = new Point(24, 184);
+            txtCodigo.Name = "txtCodigo";
+            txtCodigo.Size = new Size(296, 23);
+            txtCodigo.TabIndex = 7;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(136, 152);
+            label3.Name = "label3";
+            label3.Size = new Size(60, 21);
+            label3.TabIndex = 6;
+            label3.Text = "Código";
+            // 
             // FrmAlterarSenha
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(339, 251);
+            ClientSize = new Size(339, 332);
+            Controls.Add(txtCodigo);
+            Controls.Add(label3);
             Controls.Add(btnAlterarSenha);
-            Controls.Add(btnValidarEmail);
+            Controls.Add(btnGerarCodigo);
             Controls.Add(txtNovaSenha);
             Controls.Add(label2);
             Controls.Add(txtEmailAlterarSenha);
@@ -116,7 +138,9 @@
         private TextBox txtEmailAlterarSenha;
         private Label label2;
         private TextBox txtNovaSenha;
-        private Button btnValidarEmail;
+        private Button btnGerarCodigo;
         private Button btnAlterarSenha;
+        private TextBox txtCodigo;
+        private Label label3;
     }
 }

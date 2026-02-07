@@ -31,22 +31,66 @@ namespace SkillMap.View
             try
             {
                 Usuario? usuario = _usuarioController.BuscarPorEmail(ValidarEmail);
-                if (txtEmailAlterarSenha.Text == usuario.Email)
+
+                if (usuario == null)
                 {
-                    btnAlterarSenha.Enabled = true;
-                    txtNovaSenha.Enabled = true;
+                    MessageBox.Show("Email não encontrado");
+                    return;
                 }
+
+                var codigoController = new CodigoVerificacaoController(null);
+                codigoController.EnviarCodigo(usuario.Id.Value, usuario.Email);
+
+                txtCodigo.Enabled = true;
+
+                MessageBox.Show("Código enviado para o email cadastrado. Por favor, verifique sua caixa de entrada.");
+
+                txtNovaSenha.Enabled = true;
+                btnAlterarSenha.Enabled = true; 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao validar email: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao gerar o código: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnAlterarSenha_Click(object sender, EventArgs e)
         {
-            _usuarioController.AlterarSenha(ValidarEmail, txtNovaSenha.Text);
-            
+
+            try
+            {
+                Usuario? usuario = _usuarioController.BuscarPorEmail(ValidarEmail);
+
+                if (usuario == null)
+                {
+                    MessageBox.Show("Usuario não encontrado");
+                    return;
+                }
+
+                var codigoController = new CodigoVerificacaoController(null);
+
+                bool codigoValido = codigoController.ValidarCodigo(usuario.Id.Value, txtCodigo.Text);
+
+                if (!codigoValido)
+                {
+                    MessageBox.Show("Código de verificação inválido ou expirado. Por favor, tente novamente.");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(txtNovaSenha.Text))
+                {
+                    MessageBox.Show("A nova senha não pode ser vazia. Por favor, insira uma nova senha.");
+                    return;
+                }
+
+                _usuarioController.AlterarSenha(ValidarEmail, txtNovaSenha.Text);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao alterar a senha: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
     }
 }

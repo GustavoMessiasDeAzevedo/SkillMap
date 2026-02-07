@@ -4,6 +4,8 @@ using SkillMap.View;
 using SkilMaps.View;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
+using System.Net.Mail;
 using System.Windows.Forms;
 
 namespace SkillMap.Controller
@@ -60,10 +62,18 @@ namespace SkillMap.Controller
                     return;
                 }
 
+                if (!EmailValido(usuario.Email))
+                {
+                    MessageBox.Show("Email inválido, tente novamente.");
+                    return;
+                }
+
                 string confirmarSenha = _frmCadastroUsuario.SenhaConfirmacao;
 
                 if (usuario.Senha == confirmarSenha)
                 {
+                    
+
                     int usuarioId = _usuarioRepository.Inserir(usuario);
 
                     if (usuarioId > 0)
@@ -83,6 +93,24 @@ namespace SkillMap.Controller
                 MessageBox.Show("Erro ao cadastrar: " + ex.Message);
             }
         }
+
+        private bool EmailValido(string email)
+        {
+            try
+            {
+                var testeEmail = new MailAddress(email);
+                if (!testeEmail.Host.Contains("."))
+                    return false;
+                return testeEmail.Address == email;
+
+                
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
 
         // ===== EXCLUIR =====
         public void Excluir(int id)
