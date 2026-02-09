@@ -101,8 +101,8 @@ namespace SkillMap.View
 
                 this.Hide();
                 // Fechar todas as telas e voltar para login
-                FrmTelaLogin telaLogin = new FrmTelaLogin();
-                telaLogin.Show();
+                FrmTelaInicial telaInicial = new FrmTelaInicial();
+                telaInicial.Show();
 
                 
             }
@@ -135,8 +135,10 @@ namespace SkillMap.View
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
+            this.Hide();
             FrmTelaPrincipal frmTelaPrincipal = new FrmTelaPrincipal();
-            this.Close();
+            frmTelaPrincipal.Show();
+
         }
 
 
@@ -155,6 +157,11 @@ namespace SkillMap.View
             btnSalvar.Enabled = false;
 
 
+        }
+
+        private void FrmTelaPerfil_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 

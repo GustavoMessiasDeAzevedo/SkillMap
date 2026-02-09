@@ -66,9 +66,11 @@ namespace SkillMap.View
 
                         SessaoUsuario.UsuarioLogado = usuario;
 
-                        this.Close();
+                        this.Hide();
                         FrmTelaPrincipal frmTelaPrincipal = new FrmTelaPrincipal();
-                        frmTelaPrincipal.Show();
+                        frmTelaPrincipal.ShowDialog();
+
+
                     }
                     else
                     {
@@ -94,7 +96,16 @@ namespace SkillMap.View
             txtSenha.UseSystemPasswordChar = true;
         }
 
-       
+        private void FrmTelaLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmAlterarSenha frmAlterarSenha = new FrmAlterarSenha();
+            frmAlterarSenha.Show();
+        }
     }
 }
 

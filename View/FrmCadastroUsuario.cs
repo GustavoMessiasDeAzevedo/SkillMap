@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SkillMap;
 using SkillMap.Controller;
 using SkillMap.Model;
 
@@ -34,7 +35,7 @@ namespace SkilMaps.View
                 Descricao = txtDescricao.Text,
                 Senha = txtSenha.Text,
                 Localizacao = cbxPerfil.Text,
-              
+
             };
             _usuarioController.Salvar(usuario);
             LimparCampos();
@@ -52,7 +53,15 @@ namespace SkilMaps.View
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            LimparCampos();
             this.Close();
+            FrmTelaInicial frmTelaInicial = new FrmTelaInicial();
+            frmTelaInicial.Show();
+        }
+
+        private void FrmCadastroUsuario_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         public string SenhaConfirmacao

@@ -27,13 +27,17 @@ namespace SkillMap
         {
             FrmCadastroUsuario frmCadastro = new FrmCadastroUsuario();
             frmCadastro.Show();
+            this.Hide();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            this.Show();
             FrmTelaLogin frmLogin = new FrmTelaLogin();
             frmLogin.Show();
             this.Hide();
         }
+
+
     }
 }

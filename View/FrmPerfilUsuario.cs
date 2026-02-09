@@ -58,9 +58,14 @@ namespace SkillMap.View
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-           this.Close();
+            this.Close();
             FrmTelaPrincipal frmTelaPrincipal = new FrmTelaPrincipal();
             frmTelaPrincipal.Show();
+        }
+
+        private void FrmPerfilUsuario_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -34,6 +34,7 @@
             lblSenha = new Label();
             btnLogin = new Button();
             btnCadastrase = new Button();
+            linkLabel1 = new LinkLabel();
             SuspendLayout();
             // 
             // txtEmail
@@ -50,7 +51,6 @@
             txtSenha.Size = new Size(216, 23);
             txtSenha.TabIndex = 1;
             txtSenha.UseSystemPasswordChar = true;
-            
             // 
             // lblEmail
             // 
@@ -74,7 +74,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(96, 168);
+            btnLogin.Location = new Point(96, 200);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(96, 32);
             btnLogin.TabIndex = 4;
@@ -84,19 +84,32 @@
             // 
             // btnCadastrase
             // 
-            btnCadastrase.Location = new Point(72, 216);
+            btnCadastrase.Location = new Point(72, 240);
             btnCadastrase.Name = "btnCadastrase";
-            btnCadastrase.Size = new Size(136, 23);
+            btnCadastrase.Size = new Size(144, 23);
             btnCadastrase.TabIndex = 5;
             btnCadastrase.Text = "Cadastre-se";
             btnCadastrase.UseVisualStyleBackColor = true;
             btnCadastrase.Click += btnCadastrase_Click;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.LinkColor = Color.Black;
+            linkLabel1.Location = new Point(88, 176);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(118, 15);
+            linkLabel1.TabIndex = 6;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Esqueci minha senha";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // FrmTelaLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(302, 286);
+            Controls.Add(linkLabel1);
             Controls.Add(btnCadastrase);
             Controls.Add(btnLogin);
             Controls.Add(lblSenha);
@@ -104,7 +117,9 @@
             Controls.Add(txtSenha);
             Controls.Add(txtEmail);
             Name = "FrmTelaLogin";
-            Text = "Tela de Login";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Login";
+            FormClosed += FrmTelaLogin_FormClosed;
             Load += FrmTelaLogin_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -118,5 +133,6 @@
         private Label lblSenha;
         private Button btnLogin;
         private Button btnCadastrase;
+        private LinkLabel linkLabel1;
     }
 }
