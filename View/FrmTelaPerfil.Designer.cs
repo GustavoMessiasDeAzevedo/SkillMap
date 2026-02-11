@@ -221,7 +221,6 @@
             Name = "FrmTelaPerfil";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Meu Perfil";
-            FormClosed += FrmTelaPerfil_FormClosed;
             Load += FrmTelaPerfil_Load;
             gpbPerfilUsuario.ResumeLayout(false);
             gpbPerfilUsuario.PerformLayout();

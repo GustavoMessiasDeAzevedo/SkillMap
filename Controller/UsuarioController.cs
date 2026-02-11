@@ -101,8 +101,7 @@ namespace SkillMap.Controller
                         var habilidadeController = new HabilidadeController(_frmCadastroUsuario);
                         habilidadeController.ProcessarHabilidadesDoUsuario(usuarioId);
                         MessageBox.Show("Cadastro realizado com sucesso!!");
-                        _frmCadastroUsuario.Close();
-                        _frmTelaLogin.ShowDialog();
+
                     }
                 }
                 else
