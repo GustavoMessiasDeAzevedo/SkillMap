@@ -88,6 +88,7 @@
             txtConfirmarSenha.Location = new Point(289, 102);
             txtConfirmarSenha.Margin = new Padding(4, 3, 4, 3);
             txtConfirmarSenha.Name = "txtConfirmarSenha";
+            txtConfirmarSenha.PasswordChar = '*';
             txtConfirmarSenha.Size = new Size(251, 23);
             txtConfirmarSenha.TabIndex = 4;
             // 
@@ -144,6 +145,7 @@
             txtSenha.Location = new Point(19, 102);
             txtSenha.Margin = new Padding(4, 3, 4, 3);
             txtSenha.Name = "txtSenha";
+            txtSenha.PasswordChar = '*';
             txtSenha.Size = new Size(251, 23);
             txtSenha.TabIndex = 3;
             // 
@@ -238,7 +240,6 @@
             Name = "FrmCadastroUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro";
-            FormClosed += FrmCadastroUsuario_FormClosed;
             Load += FrmCadastroUsuario_Load;
             grbDadosUsuario.ResumeLayout(false);
             grbDadosUsuario.PerformLayout();

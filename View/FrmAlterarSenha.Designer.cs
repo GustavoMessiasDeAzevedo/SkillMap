@@ -70,6 +70,7 @@
             txtNovaSenha.Enabled = false;
             txtNovaSenha.Location = new Point(24, 256);
             txtNovaSenha.Name = "txtNovaSenha";
+            txtNovaSenha.PasswordChar = '*';
             txtNovaSenha.Size = new Size(296, 23);
             txtNovaSenha.TabIndex = 3;
             // 
