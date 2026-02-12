@@ -48,7 +48,7 @@ namespace SkillMap.View
             frmTelaPerfil.Show();
             
 
-        }
+        
 
 
 

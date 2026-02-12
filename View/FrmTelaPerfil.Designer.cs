@@ -44,11 +44,15 @@
             txtNomeUsuario = new TextBox();
             lblNome = new Label();
             btnVoltar = new Button();
+            lblWhatsApp = new Label();
+            txtWhatsApp = new TextBox();
             gpbPerfilUsuario.SuspendLayout();
             SuspendLayout();
             // 
             // gpbPerfilUsuario
             // 
+            gpbPerfilUsuario.Controls.Add(txtWhatsApp);
+            gpbPerfilUsuario.Controls.Add(lblWhatsApp);
             gpbPerfilUsuario.Controls.Add(lblCodigoUsuario);
             gpbPerfilUsuario.Controls.Add(txtId);
             gpbPerfilUsuario.Controls.Add(cbxEstado);
@@ -211,6 +215,22 @@
             btnVoltar.UseVisualStyleBackColor = true;
             btnVoltar.Click += btnVoltar_Click;
             // 
+            // lblWhatsApp
+            // 
+            lblWhatsApp.AutoSize = true;
+            lblWhatsApp.Location = new Point(269, 129);
+            lblWhatsApp.Name = "lblWhatsApp";
+            lblWhatsApp.Size = new Size(62, 15);
+            lblWhatsApp.TabIndex = 14;
+            lblWhatsApp.Text = "WhatsApp";
+            // 
+            // txtWhatsApp
+            // 
+            txtWhatsApp.Location = new Point(272, 144);
+            txtWhatsApp.Name = "txtWhatsApp";
+            txtWhatsApp.Size = new Size(160, 23);
+            txtWhatsApp.TabIndex = 15;
+            // 
             // FrmTelaPerfil
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -245,5 +265,7 @@
         private TextBox txtId;
         private Label lblCodigoUsuario;
         private Button btnVoltar;
+        private TextBox txtWhatsApp;
+        private Label lblWhatsApp;
     }
 }

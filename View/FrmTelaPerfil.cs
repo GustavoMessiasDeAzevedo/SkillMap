@@ -43,6 +43,8 @@ namespace SkillMap.View
             txtNomeUsuario.Text = user.Nome;
             txtEmailUsuario.Text = user.Email;
             txtId.Text = user.Id.ToString();
+            txtWhatsApp.Text = user.WhatsApp;
+            txtWhatsApp.Enabled = false;
 
 
         }
@@ -57,6 +59,7 @@ namespace SkillMap.View
             txtEmailUsuario.Enabled = true;
             cbxEstado.Enabled = true;
             txtObservacaoUsuario.Enabled = true;
+            txtWhatsApp.Enabled = true;
             btnSalvar.Enabled = true;
             btnCancelar.Enabled = true;
             btnExcluir.Enabled = true;
@@ -69,6 +72,7 @@ namespace SkillMap.View
             txtEmailUsuario.Enabled = false;
             cbxEstado.Enabled = false;
             txtObservacaoUsuario.Enabled = false;
+            txtWhatsApp.Enabled = false;
             btnSalvar.Enabled = false;
             btnCancelar.Enabled = false;
             btnExcluir.Enabled = false;
@@ -118,6 +122,7 @@ namespace SkillMap.View
                 Email = txtEmailUsuario.Text,
                 Localizacao = cbxEstado.Text,
                 Descricao = txtObservacaoUsuario.Text,
+                WhatsApp = txtWhatsApp.Text
             };
 
             if (string.IsNullOrEmpty(txtId.Text))
