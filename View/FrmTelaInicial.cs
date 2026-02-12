@@ -25,7 +25,7 @@ namespace SkillMap
             
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            FrmCadastroUsuario frmCadastro = new FrmCadastroUsuario();
+            FrmCadastroUsuario frmCadastro = new FrmCadastroUsuario(this);
             frmCadastro.Show();
             this.Hide();
         }
@@ -33,7 +33,7 @@ namespace SkillMap
         private void btnLogin_Click(object sender, EventArgs e)
         {
             this.Show();
-            FrmTelaLogin frmLogin = new FrmTelaLogin();
+            FrmTelaLogin frmLogin = new FrmTelaLogin(this);
             frmLogin.Show();
             this.Hide();
         }

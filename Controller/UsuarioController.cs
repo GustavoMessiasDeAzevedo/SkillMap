@@ -4,7 +4,15 @@ using SkillMap.View;
 using SkilMaps.View;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
+using System.Net.Mail;
 using System.Windows.Forms;
+using System.Security;
+using SkillMap.Security;
+using System.Runtime.InteropServices;
+using System.Web;
+using Microsoft.Data.SqlClient;
+using System.Configuration;
 
 namespace SkillMap.Controller
 {
@@ -16,11 +24,18 @@ namespace SkillMap.Controller
         private UsuarioRepository _usuarioRepository;
         private FrmPerfilUsuario frmPerfilUsuario;
         private FrmAlterarSenha _frmAlterarSenha;
+        private FrmTelaLogin _frmTelaLogin;
 
         // Construtor para Cadastro
         public UsuarioController(FrmCadastroUsuario view)
         {
             _frmCadastroUsuario = view;
+            _usuarioRepository = new UsuarioRepository();
+        }
+
+        public UsuarioController(FrmTelaLogin view)
+        {
+            _frmTelaLogin = view;
             _usuarioRepository = new UsuarioRepository();
         }
 
@@ -60,10 +75,25 @@ namespace SkillMap.Controller
                     return;
                 }
 
+                if (!EmailValido(usuario.Email))
+                {
+                    MessageBox.Show("Email inválido, tente novamente.");
+                    return;
+                }
+
+                string senha = _frmCadastroUsuario.Senha;
+
                 string confirmarSenha = _frmCadastroUsuario.SenhaConfirmacao;
 
-                if (usuario.Senha == confirmarSenha)
+                if (senha == confirmarSenha)
                 {
+
+                    var (hash, salt) = PasswordHasher.CriarHash(senha);
+
+                    usuario.SenhaHash = hash;
+                    usuario.SenhaSalt = salt;
+
+
                     int usuarioId = _usuarioRepository.Inserir(usuario);
 
                     if (usuarioId > 0)
@@ -71,6 +101,7 @@ namespace SkillMap.Controller
                         var habilidadeController = new HabilidadeController(_frmCadastroUsuario);
                         habilidadeController.ProcessarHabilidadesDoUsuario(usuarioId);
                         MessageBox.Show("Cadastro realizado com sucesso!!");
+
                     }
                 }
                 else
@@ -83,6 +114,24 @@ namespace SkillMap.Controller
                 MessageBox.Show("Erro ao cadastrar: " + ex.Message);
             }
         }
+
+        private bool EmailValido(string email)
+        {
+            try
+            {
+                var testeEmail = new MailAddress(email);
+                if (!testeEmail.Host.Contains("."))
+                    return false;
+                return testeEmail.Address == email;
+
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
 
         // ===== EXCLUIR =====
         public void Excluir(int id)
@@ -138,7 +187,7 @@ namespace SkillMap.Controller
                 _usuarioRepository.Atualizar(usuario);
                 MessageBox.Show("Usuário atualizado com sucesso.");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro ao atualizar: " + ex.Message);
             }
@@ -148,7 +197,7 @@ namespace SkillMap.Controller
         {
             return _usuarioRepository.BuscarId(id);
         }
-        
+
         public Usuario? BuscarPorEmail(string email)
         {
             return _usuarioRepository.BuscarPorEmail(email);
@@ -158,7 +207,10 @@ namespace SkillMap.Controller
         {
             try
             {
-                _usuarioRepository.AlterarSenha(email,senha);
+
+                var (hash, salt) = PasswordHasher.CriarHash(senha);
+
+                _usuarioRepository.AlterarSenha(email, hash, salt);
                 MessageBox.Show("Senha alterada com sucesso.");
                 _frmAlterarSenha.Close();
             }
@@ -168,6 +220,39 @@ namespace SkillMap.Controller
             }
         }
 
-    }
+        public void Login(string email, string senha)
+        {
 
-}
+            try
+            {
+                var usuario = _usuarioRepository.BuscarParaLogin(email);
+                if (usuario == null)
+                {
+                    MessageBox.Show("Email não encontrado. Verifique e tente novamente.");
+                    return;
+                }
+                    
+
+                bool senhaValida = PasswordHasher.VerficarSenha(senha, usuario.SenhaHash, usuario.SenhaSalt);
+
+                if (!senhaValida)
+                {
+                    MessageBox.Show("Email ou Senha incorretos. Verifique e tente novamente.");
+                    return;
+                }
+
+                SessaoUsuario.UsuarioLogado = usuario;
+
+                _frmTelaLogin.Close();
+                FrmTelaPrincipal frmTelaPrincipal = new FrmTelaPrincipal();
+                frmTelaPrincipal.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao realizar o login: " + ex.Message);
+            }
+        }
+    }
+}    
+
+

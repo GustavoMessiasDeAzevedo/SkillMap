@@ -35,6 +35,7 @@
             btnLogin = new Button();
             btnCadastrase = new Button();
             linkLabel1 = new LinkLabel();
+            btnVoltar = new Button();
             SuspendLayout();
             // 
             // txtEmail
@@ -104,11 +105,22 @@
             linkLabel1.Text = "Esqueci minha senha";
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
+            // btnVoltar
+            // 
+            btnVoltar.Location = new Point(72, 272);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.Size = new Size(144, 23);
+            btnVoltar.TabIndex = 7;
+            btnVoltar.Text = "Voltar";
+            btnVoltar.UseVisualStyleBackColor = true;
+            btnVoltar.Click += btnVoltar_Click;
+            // 
             // FrmTelaLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(302, 286);
+            ClientSize = new Size(302, 305);
+            Controls.Add(btnVoltar);
             Controls.Add(linkLabel1);
             Controls.Add(btnCadastrase);
             Controls.Add(btnLogin);
@@ -119,7 +131,6 @@
             Name = "FrmTelaLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
-            FormClosed += FrmTelaLogin_FormClosed;
             Load += FrmTelaLogin_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -134,5 +145,6 @@
         private Button btnLogin;
         private Button btnCadastrase;
         private LinkLabel linkLabel1;
+        private Button btnVoltar;
     }
 }

@@ -43,16 +43,10 @@ namespace SkillMap.View
 
         private void btnMeuPerfil_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            using (FrmTelaPerfil frmTelaPerfil = new FrmTelaPerfil())
-            {
-                frmTelaPerfil.Show();
-            }
-            this.Hide();
+           
             FrmTelaPerfil frmTelaPerfil = new FrmTelaPerfil();
             frmTelaPerfil.Show();
-           
-        }
+            
 
         }
 
@@ -80,9 +74,5 @@ namespace SkillMap.View
 
         }
 
-        private void FrmTelaPrincipal_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
     }
 }

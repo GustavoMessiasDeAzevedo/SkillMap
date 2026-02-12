@@ -18,10 +18,12 @@ namespace SkillMap.View
     public partial class FrmTelaPerfil : Form
     {
         private UsuarioController _usuarioController;
+
         public FrmTelaPerfil()
         {
             InitializeComponent();
             _usuarioController = new UsuarioController(this);
+
         }
 
         public void FrmTelaPerfil_Load(object sender, EventArgs e)
@@ -135,9 +137,8 @@ namespace SkillMap.View
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FrmTelaPrincipal frmTelaPrincipal = new FrmTelaPrincipal();
-            frmTelaPrincipal.Show();
+            this.Close();
+
 
         }
 
@@ -159,10 +160,6 @@ namespace SkillMap.View
 
         }
 
-        private void FrmTelaPerfil_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
     }
 
 

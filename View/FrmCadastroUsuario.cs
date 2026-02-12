@@ -16,10 +16,13 @@ namespace SkilMaps.View
     public partial class FrmCadastroUsuario : Form
     {
         private UsuarioController _usuarioController;
-        public FrmCadastroUsuario()
+        private Form _frmTelaInicial;
+
+        public FrmCadastroUsuario(Form frmTelainicial)
         {
             InitializeComponent();
             _usuarioController = new UsuarioController(this);
+            _frmTelaInicial = frmTelainicial;
         }
 
         private void FrmCadastroUsuario_Load(object sender, EventArgs e)
@@ -33,7 +36,6 @@ namespace SkilMaps.View
                 Nome = txtNome.Text,
                 Email = txtEmail.Text,
                 Descricao = txtDescricao.Text,
-                Senha = txtSenha.Text,
                 Localizacao = cbxPerfil.Text,
 
             };
@@ -54,19 +56,19 @@ namespace SkilMaps.View
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimparCampos();
+            _frmTelaInicial.Show();
             this.Close();
-            FrmTelaInicial frmTelaInicial = new FrmTelaInicial();
-            frmTelaInicial.Show();
-        }
-
-        private void FrmCadastroUsuario_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
+            
         }
 
         public string SenhaConfirmacao
         {
             get { return txtConfirmarSenha.Text; }
+        }
+
+        public string Senha
+        {
+            get { return txtSenha.Text; }
         }
 
         public string habilidadeNome
