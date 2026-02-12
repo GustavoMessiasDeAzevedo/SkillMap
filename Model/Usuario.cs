@@ -19,9 +19,6 @@ namespace SkillMap.Model
         public string? SenhaHash {  get; set; }
         public string? SenhaSalt {  get; set; }
 
-
-        public string? Localizacao { get; set; }
-        public string? Descricao { get; set; }
         public string? Habilidades { get; set; }
     }
 }

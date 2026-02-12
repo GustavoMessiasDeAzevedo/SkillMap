@@ -255,9 +255,6 @@ namespace SkillMap.Controller
                 MessageBox.Show("Erro ao realizar o login: " + ex.Message);
             }
         }
-    }
-}    
-
 
         public void WhatsApp(string numero)
         {
@@ -273,12 +270,10 @@ namespace SkillMap.Controller
                     UseShellExecute = true
                 });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro ao abrir WhatsApp: " + ex.Message);
             }
         }
-
     }
-
-}
+}    
