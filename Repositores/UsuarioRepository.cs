@@ -90,7 +90,6 @@ namespace SkillMap.Repositores
                     comando.Parameters.AddWithValue("@Salt", usuario.SenhaSalt);
                     comando.Parameters.AddWithValue("@Localizacao", usuario.Localizacao);
                     comando.Parameters.AddWithValue("@Descricao", usuario.Descricao);
-                    comando.Parameters.AddWithValue("@Localizacao", usuario.Localizacao);
                     comando.Parameters.AddWithValue("@whatsApp",usuario.WhatsApp ?? "");
 
                     conexao.Open();

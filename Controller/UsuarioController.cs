@@ -264,11 +264,15 @@ namespace SkillMap.Controller
                 string mensagemCodificada = WebUtility.UrlEncode(mensagem);
                 string url = $"https://wa.me/{_frmPerfilUsuario.NumeroWhatsApp}?text={mensagemCodificada}";
 
+
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = url,
                     UseShellExecute = true
                 });
+
+                MessageBox.Show("Abrindo WhatsApp...");
+
             }
             catch (Exception ex)
             {

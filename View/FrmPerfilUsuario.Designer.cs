@@ -68,11 +68,10 @@
             btnWhatsApp.Location = new Point(256, 152);
             btnWhatsApp.Name = "btnWhatsApp";
             btnWhatsApp.Size = new Size(136, 32);
-            btnWhatsApp.TabIndex = 11;
+            btnWhatsApp.TabIndex = 12;
             btnWhatsApp.Text = "Falar no WhatsaApp";
             btnWhatsApp.UseVisualStyleBackColor = true;
-            btnWhatsApp.Visible = false;
-            btnWhatsApp.Click += btnWhatsApp_Click;
+            btnWhatsApp.Click += this.button1_Click;
             // 
             // btnVoltar
             // 
@@ -166,7 +165,6 @@
             Name = "FrmPerfilUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Perfil Usuário";
-            FormClosed += FrmPerfilUsuario_FormClosed;
             Load += FrmPerfilUsuario_Load;
             grbPerfilUsuario.ResumeLayout(false);
             grbPerfilUsuario.PerformLayout();

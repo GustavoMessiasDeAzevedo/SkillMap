@@ -25,7 +25,7 @@ namespace SkillMap.View
         {
             InitializeComponent();
             _usuarioController = new UsuarioController(this);
-           
+
         }
 
         private void FrmPerfilUsuario_Load(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace SkillMap.View
             txtObservacao.Text = usuario.Descricao;
 
             _whatsAppUsuario = usuario.WhatsApp;
-            btnWhatsApp.Visible = !string.IsNullOrWhiteSpace(_whatsAppUsuario);
+            //btnWhatsApp.Visible = !string.IsNullOrWhiteSpace(_whatsAppUsuario);
         }
 
         private void BloquearCampos()
@@ -64,32 +64,33 @@ namespace SkillMap.View
 
         }
 
-        public string? NumeroWhatsApp()
+        public string? NumeroWhatsApp
         {
-            var usuario = SessaoUsuario.UsuarioLogado;
+            get {
+                var usuario = SessaoUsuario.UsuarioLogado;
 
-            return usuario.WhatsApp;
+                return usuario.WhatsApp;
+            }
+            
         }
 
-        public string? UsuarioNome()
+        public string? UsuarioNome
         {
-            var usuario = SessaoUsuario.UsuarioLogado;
-            return usuario.Nome;
+            get {
+                var usuario = SessaoUsuario.UsuarioLogado;
+                return usuario.Nome;
+            }
+            
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();
-            FrmTelaPrincipal frmTelaPrincipal = new FrmTelaPrincipal();
-            frmTelaPrincipal.Show();
         }
 
-        private void FrmPerfilUsuario_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
 
-        private void btnWhatsApp_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
             var usuario = SessaoUsuario.UsuarioLogado;
 

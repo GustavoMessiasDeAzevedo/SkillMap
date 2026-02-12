@@ -59,9 +59,9 @@ namespace SkillMap.View
                 int id = (int)dgvPesquisaHabilidade.Rows[e.RowIndex].Cells["Id"].Value;
                 FrmPerfilUsuario frmPerfilUsuario = new FrmPerfilUsuario();
 
-                this.Hide();
+
                 frmPerfilUsuario.Show();
-                this.Close();
+  
 
             }
         }
