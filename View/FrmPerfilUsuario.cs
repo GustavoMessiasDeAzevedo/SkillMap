@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,12 +18,10 @@ namespace SkillMap.View
         private UsuarioController _usuarioController;
 
         private int? _usuarioId;
-        private string _whatsAppUsuario = "";
         public FrmPerfilUsuario()
         {
             InitializeComponent();
             _usuarioController = new UsuarioController(this);
-
         }
 
         private void FrmPerfilUsuario_Load(object sender, EventArgs e)
@@ -49,9 +45,6 @@ namespace SkillMap.View
             txtEmail.Text = usuario.Email;
             cbxEstado.SelectedItem = usuario.Localizacao;
             txtObservacao.Text = usuario.Descricao;
-
-            _whatsAppUsuario = usuario.WhatsApp;
-            //btnWhatsApp.Visible = !string.IsNullOrWhiteSpace(_whatsAppUsuario);
         }
 
         private void BloquearCampos()
@@ -61,43 +54,18 @@ namespace SkillMap.View
             cbxEstado.Enabled = false;
             txtObservacao.ReadOnly = true;
 
-
-        }
-
-        public string? NumeroWhatsApp
-        {
-            get {
-                var usuario = SessaoUsuario.UsuarioLogado;
-
-                return usuario.WhatsApp;
-            }
-            
-        }
-
-        public string? UsuarioNome
-        {
-            get {
-                var usuario = SessaoUsuario.UsuarioLogado;
-                return usuario.Nome;
-            }
-            
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();
+            FrmTelaPrincipal frmTelaPrincipal = new FrmTelaPrincipal();
+            frmTelaPrincipal.Show();
         }
 
-
-
-        private void button1_Click(object sender, EventArgs e)
+        private void FrmPerfilUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {
-            var usuario = SessaoUsuario.UsuarioLogado;
-
-            if (usuario.WhatsApp != null)
-            {
-                _usuarioController.WhatsApp(usuario.WhatsApp);
-            }
+            Application.Exit();
         }
     }
 }
