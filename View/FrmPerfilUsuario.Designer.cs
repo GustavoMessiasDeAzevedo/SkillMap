@@ -30,6 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             grbPerfilUsuario = new GroupBox();
+            btnWhatsApp = new Button();
             btnVoltar = new Button();
             lblObservacao = new Label();
             txtObservacao = new TextBox();
@@ -45,6 +46,7 @@
             // 
             // grbPerfilUsuario
             // 
+            grbPerfilUsuario.Controls.Add(btnWhatsApp);
             grbPerfilUsuario.Controls.Add(btnVoltar);
             grbPerfilUsuario.Controls.Add(lblObservacao);
             grbPerfilUsuario.Controls.Add(txtObservacao);
@@ -60,6 +62,17 @@
             grbPerfilUsuario.TabIndex = 0;
             grbPerfilUsuario.TabStop = false;
             grbPerfilUsuario.Text = "Perfil do Usuário";
+            // 
+            // btnWhatsApp
+            // 
+            btnWhatsApp.Location = new Point(256, 152);
+            btnWhatsApp.Name = "btnWhatsApp";
+            btnWhatsApp.Size = new Size(136, 32);
+            btnWhatsApp.TabIndex = 11;
+            btnWhatsApp.Text = "Falar no WhatsaApp";
+            btnWhatsApp.UseVisualStyleBackColor = true;
+            btnWhatsApp.Visible = false;
+            btnWhatsApp.Click += btnWhatsApp_Click;
             // 
             // btnVoltar
             // 
@@ -173,5 +186,6 @@
         private Label lblObservacao;
         private Button btnVoltar;
         private ImageList imlIcones;
+        private Button btnWhatsApp;
     }
 }

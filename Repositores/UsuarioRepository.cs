@@ -76,8 +76,8 @@ namespace SkillMap.Repositores
             using (var conexao = ConexaoDB.GetConexao())
             {
                 string sql = @"
-                    INSERT INTO Usuarios (Nome, Email, Senha, Descricao, Localizacao)
-                    VALUES (@Nome, @Email, @Senha, @Descricao, @Localizacao);
+                    INSERT INTO Usuarios (Nome, Email, Senha, Descricao, Localizacao, WhatsApp)
+                    VALUES (@Nome, @Email, @Senha, @Descricao, @Localizacao, @whatsApp);
                     SELECT SCOPE_IDENTITY();";
 
                 using (var comando = new SqlCommand(sql, conexao))
@@ -85,8 +85,9 @@ namespace SkillMap.Repositores
                     comando.Parameters.AddWithValue("@Nome", usuario.Nome);
                     comando.Parameters.AddWithValue("@Email", usuario.Email);
                     comando.Parameters.AddWithValue("@Senha", usuario.Senha);
-                    comando.Parameters.AddWithValue("@Localizacao", usuario.Localizacao);
                     comando.Parameters.AddWithValue("@Descricao", usuario.Descricao);
+                    comando.Parameters.AddWithValue("@Localizacao", usuario.Localizacao);
+                    comando.Parameters.AddWithValue("@whatsApp",usuario.WhatsApp ?? "");
 
                     conexao.Open();
 
@@ -124,7 +125,7 @@ namespace SkillMap.Repositores
         {
             using (var conexao = ConexaoDB.GetConexao())
             {
-                string sql = "UPDATE Usuarios SET nome = @nome, email = @email, descricao = @descricao, localizacao = @localizacao WHERE id = @id";
+                string sql = "UPDATE Usuarios SET nome = @nome, email = @email, descricao = @descricao, localizacao = @localizacao, WhatsApp = @whatsapp WHERE id = @id";
 
                 using (var comando = new SqlCommand(sql, conexao))
                 {
@@ -132,6 +133,7 @@ namespace SkillMap.Repositores
                     comando.Parameters.AddWithValue("@email", usuario.Email);
                     comando.Parameters.AddWithValue("@descricao", usuario.Descricao);
                     comando.Parameters.AddWithValue("@localizacao", usuario.Localizacao);
+                    comando.Parameters.AddWithValue("@whatsapp", usuario.WhatsApp ?? "");
                     comando.Parameters.AddWithValue("@id", usuario.Id);
                     conexao.Open();
                     comando.ExecuteNonQuery();
@@ -150,12 +152,13 @@ namespace SkillMap.Repositores
                 u.Email,
                 u.Descricao,
                 u.Localizacao,
+                u.WhatsApp,
                 STRING_AGG(h.Nome, ', ') AS Habilidades
             FROM Usuarios u
             LEFT JOIN Habilidade_Usuarios hu ON u.Id = hu.usuario_id
             LEFT JOIN Habilidades h ON h.habilidade_id = hu.habilidade_id
             WHERE u.Id = @Id
-            GROUP BY u.Id, u.Nome, u.Email, u.Descricao, u.Localizacao
+            GROUP BY u.Id, u.Nome, u.Email, u.Descricao, u.Localizacao, u.WhatsApp
         ";
 
                 using (var comando = new SqlCommand(sql, conexao))
@@ -174,6 +177,7 @@ namespace SkillMap.Repositores
                                 Email = reader["Email"].ToString(),
                                 Descricao = reader["Descricao"].ToString(),
                                 Localizacao = reader["Localizacao"].ToString(),
+                                WhatsApp = reader["WhatsApp"] == DBNull.Value ? "" : reader["WhatsApp"].ToString(),
                                 Habilidades = reader["Habilidades"] == DBNull.Value
                                     ? ""
                                     : reader["Habilidades"].ToString()
