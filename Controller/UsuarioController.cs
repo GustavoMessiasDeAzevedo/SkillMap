@@ -4,6 +4,8 @@ using SkillMap.View;
 using SkilMaps.View;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net;
 using System.Windows.Forms;
 
 namespace SkillMap.Controller
@@ -14,7 +16,7 @@ namespace SkillMap.Controller
         private FrmTelaPrincipal _frmTelaPrincipal;
         private FrmTelaPerfil _frmTelaPerfil;
         private UsuarioRepository _usuarioRepository;
-        private FrmPerfilUsuario frmPerfilUsuario;
+        private FrmPerfilUsuario _frmPerfilUsuario;
         private FrmAlterarSenha _frmAlterarSenha;
 
         // Construtor para Cadastro
@@ -46,7 +48,8 @@ namespace SkillMap.Controller
 
         public UsuarioController(FrmPerfilUsuario frmPerfilUsuario)
         {
-            this.frmPerfilUsuario = frmPerfilUsuario;
+            _frmPerfilUsuario = frmPerfilUsuario;
+            this._frmPerfilUsuario = frmPerfilUsuario;
         }
 
         // ===== SALVAR =====
@@ -165,6 +168,26 @@ namespace SkillMap.Controller
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao alterar senha: " + ex.Message);
+            }
+        }
+
+        public void WhatsApp(string numero)
+        {
+            try
+            {
+                string mensagem = $"Olá, {_frmPerfilUsuario.UsuarioNome}! Vi seu perfil no SkillMap e gostaria de conversar sobre suas habilidades.";
+                string mensagemCodificada = WebUtility.UrlEncode(mensagem);
+                string url = $"https://wa.me/{_frmPerfilUsuario.NumeroWhatsApp}?text={mensagemCodificada}";
+
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                });
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro ao abrir WhatsApp: " + ex.Message);
             }
         }
 

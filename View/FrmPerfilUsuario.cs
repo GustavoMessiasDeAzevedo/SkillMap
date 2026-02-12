@@ -60,8 +60,21 @@ namespace SkillMap.View
             txtEmail.ReadOnly = true;
             cbxEstado.Enabled = false;
             txtObservacao.ReadOnly = true;
-            
 
+
+        }
+
+        public string? NumeroWhatsApp()
+        {
+            var usuario = SessaoUsuario.UsuarioLogado;
+
+            return usuario.WhatsApp;
+        }
+
+        public string? UsuarioNome()
+        {
+            var usuario = SessaoUsuario.UsuarioLogado;
+            return usuario.Nome;
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -78,15 +91,12 @@ namespace SkillMap.View
 
         private void btnWhatsApp_Click(object sender, EventArgs e)
         {
-            string mensagem = $"Olá, {txtNome.Text}! Vi seu perfil no SkillMap e gostaria de conversar sobre suas habilidades.";
-            string mensagemCodificada = WebUtility.UrlEncode(mensagem);
-            string url = $"https://wa.me/{_whatsAppUsuario}?text={mensagemCodificada}";
+            var usuario = SessaoUsuario.UsuarioLogado;
 
-            Process.Start(new ProcessStartInfo
+            if (usuario.WhatsApp != null)
             {
-                FileName = url,
-                UseShellExecute = true
-            });
+                _usuarioController.WhatsApp(usuario.WhatsApp);
+            }
         }
     }
 }
