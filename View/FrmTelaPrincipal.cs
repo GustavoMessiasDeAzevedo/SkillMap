@@ -43,12 +43,12 @@ namespace SkillMap.View
 
         private void btnMeuPerfil_Click(object sender, EventArgs e)
         {
-           
+
             FrmTelaPerfil frmTelaPerfil = new FrmTelaPerfil();
             frmTelaPerfil.Show();
-            
 
         }
+        
 
 
 
@@ -59,9 +59,9 @@ namespace SkillMap.View
                 int id = (int)dgvPesquisaHabilidade.Rows[e.RowIndex].Cells["Id"].Value;
                 FrmPerfilUsuario frmPerfilUsuario = new FrmPerfilUsuario();
 
-                this.Hide();
+
                 frmPerfilUsuario.Show();
-                this.Close();
+  
 
             }
         }

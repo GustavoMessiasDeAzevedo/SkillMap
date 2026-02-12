@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using SkillMap.Controller;
 using SkillMap.Model;
 using SkillMap.Repositores;
@@ -42,6 +43,8 @@ namespace SkillMap.View
             txtNomeUsuario.Text = user.Nome;
             txtEmailUsuario.Text = user.Email;
             txtId.Text = user.Id.ToString();
+            txtWhatsApp.Text = user.WhatsApp;
+            txtWhatsApp.Enabled = false;
 
 
         }
@@ -56,6 +59,7 @@ namespace SkillMap.View
             txtEmailUsuario.Enabled = true;
             cbxEstado.Enabled = true;
             txtObservacaoUsuario.Enabled = true;
+            txtWhatsApp.Enabled = true;
             btnSalvar.Enabled = true;
             btnCancelar.Enabled = true;
             btnExcluir.Enabled = true;
@@ -68,6 +72,7 @@ namespace SkillMap.View
             txtEmailUsuario.Enabled = false;
             cbxEstado.Enabled = false;
             txtObservacaoUsuario.Enabled = false;
+            txtWhatsApp.Enabled = false;
             btnSalvar.Enabled = false;
             btnCancelar.Enabled = false;
             btnExcluir.Enabled = false;
@@ -100,11 +105,12 @@ namespace SkillMap.View
 
                 SessaoUsuario.UsuarioLogado = null;
 
+                this.Hide();
                 // Fechar todas as telas e voltar para login
                 FrmTelaInicial telaInicial = new FrmTelaInicial();
                 telaInicial.Show();
 
-                this.Close();
+                
             }
         }
 
@@ -116,6 +122,7 @@ namespace SkillMap.View
                 Email = txtEmailUsuario.Text,
                 Localizacao = cbxEstado.Text,
                 Descricao = txtObservacaoUsuario.Text,
+                WhatsApp = txtWhatsApp.Text
             };
 
             if (string.IsNullOrEmpty(txtId.Text))
